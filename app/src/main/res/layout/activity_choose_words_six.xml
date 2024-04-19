@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ChooseWordsSixActivity">
+
+    <TextView
+        android:id="@+id/txtUsername6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_info6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:text="Rakibinize sormak istediğiniz kelimeyi girin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn61"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et61"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/btn61"
+        app:layout_constraintEnd_toEndOf="@+id/btn61"
+        app:layout_constraintStart_toStartOf="@+id/btn61"
+        app:layout_constraintTop_toTopOf="@+id/btn61" />
+
+    <Button
+        android:id="@+id/btn62"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn61"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et62"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/btn62"
+        app:layout_constraintEnd_toEndOf="@+id/btn62"
+        app:layout_constraintStart_toStartOf="@+id/btn62"
+        app:layout_constraintTop_toTopOf="@+id/btn62" />
+
+    <Button
+        android:id="@+id/btn63"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn62"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et63"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/btn63"
+        app:layout_constraintEnd_toEndOf="@+id/btn63"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/btn63"
+        app:layout_constraintTop_toTopOf="@+id/btn63" />
+
+    <Button
+        android:id="@+id/btn64"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn63"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et64"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/btn64"
+        app:layout_constraintEnd_toEndOf="@+id/btn64"
+        app:layout_constraintStart_toStartOf="@+id/btn64"
+        app:layout_constraintTop_toTopOf="@+id/btn64" />
+
+    <Button
+        android:id="@+id/btn65"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn64"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et65"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/btn65"
+        app:layout_constraintEnd_toEndOf="@+id/btn65"
+        app:layout_constraintStart_toStartOf="@+id/btn65"
+        app:layout_constraintTop_toTopOf="@+id/btn65" />
+
+    <Button
+        android:id="@+id/btn66"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn65"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et66"
+        android:layout_width="60dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/btn66"
+        app:layout_constraintEnd_toEndOf="@+id/btn66"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintStart_toStartOf="@+id/btn66"
+        app:layout_constraintTop_toTopOf="@+id/btn66" />
+
+    <Button
+        android:id="@+id/btn_confirm6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:text="Onayla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn63" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
