@@ -33,11 +33,7 @@ class PlayersInRoomActivity : AppCompatActivity() {
 
         setContentView(binding.root)
         initUI()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        
     }
 
     override fun onDestroy() {
@@ -166,7 +162,19 @@ class PlayersInRoomActivity : AppCompatActivity() {
 
                         override fun onFinish() {
                             alertDialog.dismiss()
-                            db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
+                            val requestStatusRef = db.child("requests").child(requestId.toString()).child("request_status")
+                            requestStatusRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    val status = dataSnapshot.getValue(Int::class.java)
+                                    if (status == 0) {
+                                        db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
+                                    }
+                                }
+
+                                override fun onCancelled(databaseError: DatabaseError) {
+                                    // Handle possible errors.
+                                }
+                            })
                         }
                     }
 
@@ -174,12 +182,12 @@ class PlayersInRoomActivity : AppCompatActivity() {
                     builder.setTitle("Oynama İsteği")
                     builder.setMessage("${dataSnapshot.child("request_from").getValue(String::class.java)} sizi oyununa davet ediyor.\nKabul ediyor musunuz?")
                     builder.setPositiveButton("Kabul Et") { dialog, which ->
-                        db.child("requests").child(requestId.toString()).child("request_status").setValue(1)
                         countDownTimerobject.cancel()
+                        db.child("requests").child(requestId.toString()).child("request_status").setValue(1)
                     }
                     builder.setNegativeButton("Reddet") { dialog, which ->
-                        db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
                         countDownTimerobject.cancel()
+                        db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
                     }
                     alertDialog = builder.create() // alertDialog'ı oluştur
                     alertDialog.show()
@@ -205,6 +213,7 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                 )
                                 val activityClass = activityMap[roomNumber]
                                 if (activityClass != null) {
+                                    db.child(roomList[mod-1]).child(roomNumber.toString()).child(username!!).child("is_playing").setValue(true)
                                     val intent = Intent(this@PlayersInRoomActivity, activityClass)
                                     intent.putExtra("username", username)
                                     intent.putExtra("mod", mod)
@@ -234,7 +243,19 @@ class PlayersInRoomActivity : AppCompatActivity() {
 
                         override fun onFinish() {
                             alertDialog.dismiss()
-                            db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
+                            val requestStatusRef = db.child("requests").child(requestId.toString()).child("request_status")
+                            requestStatusRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    val status = dataSnapshot.getValue(Int::class.java)
+                                    if (status == 0) {
+                                        db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
+                                    }
+                                }
+
+                                override fun onCancelled(databaseError: DatabaseError) {
+                                    // Handle possible errors.
+                                }
+                            })
                         }
                     }
 
@@ -250,14 +271,17 @@ class PlayersInRoomActivity : AppCompatActivity() {
                     countDownTimerobject.start()
 
                     // Add ValueEventListener to check if request_status is 2
-                    db.child("requests").child(requestId.toString()).child("request_status").addValueEventListener(object : ValueEventListener {
+                    db.child("requests").child(requestId.toString()).addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            val status = dataSnapshot.getValue(Int::class.java)
+                            val status = dataSnapshot.child("request_status").getValue(Int::class.java)
+                            val request_to = dataSnapshot.child("request_to").getValue(String::class.java)
+                            val request_from = dataSnapshot.child("request_from").getValue(String::class.java)
+
                             if (status == 2) {
                                 alertDialog.dismiss()
                                 countDownTimerobject.cancel()
                                 Toast.makeText(this@PlayersInRoomActivity, "İstek iptal edildi", Toast.LENGTH_SHORT).show()
-                            }else if (status == 1) {
+                            } else if (status == 1) {
                                 val activityMap = mapOf(
                                     4 to ChooseWordsFourActivity::class.java,
                                     5 to ChooseWordsFiveActivity::class.java,
@@ -270,10 +294,28 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                     intent.putExtra("username", username)
                                     intent.putExtra("mod", mod)
                                     startActivity(intent)
-                                }else {
+
+                                    val userMap = hashMapOf(
+                                        "mod" to mod,
+                                        "room_number" to roomNumber,
+                                        "user_1" to request_to,
+                                        "user_1_word" to "",
+                                        "user_2" to request_from,
+                                        "user_2_word" to "",
+                                    )
+
+                                    db.child("users").push().setValue(userMap)
+                                        .addOnSuccessListener {
+                                            Toast.makeText(this@PlayersInRoomActivity, "User Added Successfully", Toast.LENGTH_SHORT).show()
+                                            val intent = Intent(this@PlayersInRoomActivity, SignInActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                        .addOnFailureListener {
+                                            Toast.makeText(this@PlayersInRoomActivity, "Error Adding User", Toast.LENGTH_SHORT).show()
+                                        }
+                                } else {
                                     Toast.makeText(this@PlayersInRoomActivity, "Server Error!!!", Toast.LENGTH_SHORT).show()
                                 }
-
                             }
                         }
 

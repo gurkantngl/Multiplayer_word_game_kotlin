@@ -1,5 +1,6 @@
 package com.gurkantngl.wordgame.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -28,6 +29,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
         binding = ActivityChooseWordsFourBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
         initUI()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -76,7 +78,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
 
         })
 
-        db.child(roomList[mod-1]).child("4").child(username!!).setValue(hashMapOf("is_playing" to false))
+        db.child(roomList[mod-1]).child("4").child(username!!).setValue(hashMapOf("is_playing" to true))
 
     }
 
