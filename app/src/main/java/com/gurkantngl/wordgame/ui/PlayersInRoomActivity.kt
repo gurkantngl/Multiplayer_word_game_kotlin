@@ -33,7 +33,7 @@ class PlayersInRoomActivity : AppCompatActivity() {
 
         setContentView(binding.root)
         initUI()
-        
+
     }
 
     override fun onDestroy() {
@@ -290,10 +290,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                 )
                                 val activityClass = activityMap[roomNumber]
                                 if (activityClass != null) {
-                                    val intent = Intent(this@PlayersInRoomActivity, activityClass)
-                                    intent.putExtra("username", username)
-                                    intent.putExtra("mod", mod)
-                                    startActivity(intent)
 
                                     val userMap = hashMapOf(
                                         "mod" to mod,
@@ -304,14 +300,15 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                         "user_2_word" to "",
                                     )
 
-                                    db.child("users").push().setValue(userMap)
+                                    db.child("games").push().setValue(userMap)
                                         .addOnSuccessListener {
-                                            Toast.makeText(this@PlayersInRoomActivity, "User Added Successfully", Toast.LENGTH_SHORT).show()
-                                            val intent = Intent(this@PlayersInRoomActivity, SignInActivity::class.java)
+                                            val intent = Intent(this@PlayersInRoomActivity, activityClass)
+                                            intent.putExtra("username", username)
+                                            intent.putExtra("mod", mod)
                                             startActivity(intent)
                                         }
                                         .addOnFailureListener {
-                                            Toast.makeText(this@PlayersInRoomActivity, "Error Adding User", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(this@PlayersInRoomActivity, "Error Creating Game", Toast.LENGTH_SHORT).show()
                                         }
                                 } else {
                                     Toast.makeText(this@PlayersInRoomActivity, "Server Error!!!", Toast.LENGTH_SHORT).show()
