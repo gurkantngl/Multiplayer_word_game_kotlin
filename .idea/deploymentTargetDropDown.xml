@@ -13,24 +13,33 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\ASUS\.android\avd\Pixel_7_Pro_Edited_API_34.avd" />
+                  <value value="C:\Users\ASUS\.android\avd\Pixel_8_Pro_Edited_API_34.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-11T20:26:32.335172100Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-04-19T19:21:18.295310100Z" />
           <multipleDevicesSelectedInDropDown value="true" />
-          <targetsSelectedWithDialog>
+          <runningDeviceTargetsSelectedWithDialog>
             <Target>
-              <type value="QUICK_BOOT_TARGET" />
+              <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\ASUS\.android\avd\Pixel_7_Pro_Edited_API_34.avd" />
+                  <type value="SERIAL_NUMBER" />
+                  <value value="adb-R6CWA01CZGZ-DsIaU0._adb-tls-connect._tcp" />
                 </Key>
               </deviceKey>
             </Target>
-          </targetsSelectedWithDialog>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="adb-R58M67QVTHT-P2zqgD._adb-tls-connect._tcp" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetsSelectedWithDialog>
         </State>
       </entry>
     </value>

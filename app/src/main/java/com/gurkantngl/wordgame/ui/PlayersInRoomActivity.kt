@@ -54,7 +54,7 @@ class PlayersInRoomActivity : AppCompatActivity() {
         val username = intent.getStringExtra("username")
         val mod = intent.getIntExtra("mod", 0)
         val room_number = intent.getIntExtra("roomNumber", 0)
-        var roomList = listOf(
+        val roomList = listOf(
             "mod_1_rooms",
             "mod_2_rooms",
         )
@@ -103,7 +103,7 @@ class PlayersInRoomActivity : AppCompatActivity() {
         val mod = intent.getIntExtra("mod", 0)
         val roomNumber = intent.getIntExtra("roomNumber", 0)
         binding.txtModInfo.text = "Mod $mod - $roomNumber harf"
-        var roomList = listOf(
+        val roomList = listOf(
             "mod_1_rooms",
             "mod_2_rooms",
         )
@@ -185,11 +185,28 @@ class PlayersInRoomActivity : AppCompatActivity() {
 
                     // CountDownTimer'ı başlat
                     countDownTimerobject.start()
-                }else if (requestFrom == username) {
+
+
+                    // Add ValueEventListener to check if request_status is 2
+                    db.child("requests").child(requestId.toString()).child("request_status").addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            val status = dataSnapshot.getValue(Int::class.java)
+                            if (status == 2) {
+                                alertDialog.dismiss()
+                                countDownTimerobject.cancel()
+                                Toast.makeText(this@PlayersInRoomActivity, "İstek iptal edildi", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            // Handle possible errors.
+                        }
+                    })
+                } else if (requestFrom == username) {
                     Toast.makeText(this@PlayersInRoomActivity, "Oynama isteği gönderildi", Toast.LENGTH_SHORT).show()
 
                     lateinit var alertDialog: AlertDialog // alertDialog'ı tanımla
-                    var builder = AlertDialog.Builder(this@PlayersInRoomActivity)
+                    val builder = AlertDialog.Builder(this@PlayersInRoomActivity)
                     builder.setTitle("Oynama İsteği")
                     // CountDownTimer'ı tanımla
                     val countDownTimerobject = object : CountDownTimer(10000, 1000) {
@@ -202,14 +219,33 @@ class PlayersInRoomActivity : AppCompatActivity() {
                             db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
                         }
                     }
-                    
+
+                    builder.setNegativeButton("İptal"){ dialog, which ->
+                        db.child("requests").child(requestId.toString()).child("request_status").setValue(2)
+                        countDownTimerobject.cancel()
+                    }
 
                     builder.setMessage("${dataSnapshot.child("request_to").getValue(String::class.java)} kişisine istek gönderildi.\nYanıt Bekleniyor...")
                     alertDialog = builder.create() // alertDialog'ı oluştur
                     alertDialog.show()
 
-                    // CountDownTimer'ı başlat
                     countDownTimerobject.start()
+
+                    // Add ValueEventListener to check if request_status is 2
+                    db.child("requests").child(requestId.toString()).child("request_status").addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            val status = dataSnapshot.getValue(Int::class.java)
+                            if (status == 2) {
+                                alertDialog.dismiss()
+                                countDownTimerobject.cancel()
+                                Toast.makeText(this@PlayersInRoomActivity, "İstek iptal edildi", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            // Handle possible errors.
+                        }
+                    })
                 }
             }
 
