@@ -1,5 +1,6 @@
 package com.gurkantngl.wordgame.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AlertDialog
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -239,6 +240,23 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                 alertDialog.dismiss()
                                 countDownTimerobject.cancel()
                                 Toast.makeText(this@PlayersInRoomActivity, "İstek iptal edildi", Toast.LENGTH_SHORT).show()
+                            }else if (status == 1) {
+                                val activityMap = mapOf(
+                                    4 to ChooseWordsFourActivity::class.java,
+                                    5 to ChooseWordsFiveActivity::class.java,
+                                    6 to ChooseWordsSixActivity::class.java,
+                                    7 to ChooseWordsSevenActivity::class.java
+                                )
+                                val activityClass = activityMap[roomNumber]
+                                if (activityClass != null) {
+                                    val intent = Intent(this@PlayersInRoomActivity, activityClass)
+                                    intent.putExtra("username", username)
+                                    intent.putExtra("mod", mod)
+                                    startActivity(intent)
+                                }else {
+                                    Toast.makeText(this@PlayersInRoomActivity, "Server Error!!!", Toast.LENGTH_SHORT).show()
+                                }
+
                             }
                         }
 
