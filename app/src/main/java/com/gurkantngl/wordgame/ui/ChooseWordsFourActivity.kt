@@ -116,9 +116,9 @@ class ChooseWordsFourActivity : AppCompatActivity() {
             textList[i].filters = arrayOf<InputFilter>(InputFilter.LengthFilter(1))
         }
 
-        for(editText in textList) {
-            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
-            editText.addTextChangedListener(object : TextWatcher {
+        for(i in 0 until textList.size) {
+            textList[i].inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+            textList[i].addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                     // Do nothing
                 }
@@ -127,11 +127,20 @@ class ChooseWordsFourActivity : AppCompatActivity() {
                     // Do nothing
                 }
 
-                override fun afterTextChanged(s: Editable) {
+                override fun afterTextChanged(s: Editable?) {
                     val text = s.toString()
                     if (text != text.toUpperCase()) {
-                        editText.setText(text.toUpperCase())
-                        editText.setSelection(text.length) // Reset cursor position
+                        textList[i].setText(text.toUpperCase())
+                        textList[i].setSelection(text.length) // Reset cursor position
+                    }
+                    s?.let  {
+                        if (it.length == 1 && i < textList.size - 1) {
+                            textList[i+1].requestFocus()
+                        } else if (it.length == 0 && i > 0) {
+                            textList[i-1].requestFocus()
+                        } else {
+                            // Do nothing
+                        }
                     }
                 }
             })
@@ -142,6 +151,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
             for(editText in textList) {
                 word += editText.text.toString()
             }
+
 
             db.child("games").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
