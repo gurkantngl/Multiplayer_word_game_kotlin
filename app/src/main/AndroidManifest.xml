@@ -15,7 +15,10 @@
         android:theme="@style/Theme.WordGame"
         tools:targetApi="31">
         <activity
-            android:name=".ui.ActivityFiveGame"
+            android:name=".ui.SixGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FiveGameActivity"
             android:exported="false" />
         <activity
             android:name=".ui.FourGameActivity"
