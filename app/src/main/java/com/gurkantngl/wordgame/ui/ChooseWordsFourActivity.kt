@@ -2,6 +2,7 @@ package com.gurkantngl.wordgame.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.InputFilter
 import android.text.InputType
@@ -18,6 +19,11 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.gurkantngl.wordgame.R
 import com.gurkantngl.wordgame.databinding.ActivityChooseWordsFourBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.URL
 
 class ChooseWordsFourActivity : AppCompatActivity() {
 
@@ -96,6 +102,9 @@ class ChooseWordsFourActivity : AppCompatActivity() {
     private fun initUI() {
         val username = intent.getStringExtra("username")
         binding.txtUsername4.text = username
+        val request_to = intent.getStringExtra("request_to")
+        val request_from = intent.getStringExtra("request_from")
+        val mod = intent.getIntExtra("mod", 0)
         var textList = listOf(
             binding.et41,
             binding.et42,
@@ -133,8 +142,92 @@ class ChooseWordsFourActivity : AppCompatActivity() {
             for(editText in textList) {
                 word += editText.text.toString()
             }
-            Toast.makeText(this, word, Toast.LENGTH_SHORT).show()
+
+            db.child("games").addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (snapshot in dataSnapshot.children) {
+                        val user_1_word = snapshot.child("user_1_word").value.toString()
+                        val user_2_word = snapshot.child("user_2_word").value.toString()
+                        if (user_1_word.length > 0 && user_2_word.length > 0) {
+                            val intent = Intent(this@ChooseWordsFourActivity, FourGameActivity::class.java)
+                            intent.putExtra("username", username)
+                            intent.putExtra("mod", mod)
+                            intent.putExtra("request_to", request_to)
+                            intent.putExtra("request_from", request_from)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Hata durumunda yapılacak işlemler
+                }
+            })
+
+            GlobalScope.launch(Dispatchers.IO) {
+                val url = "https://sozluk.gov.tr/gts_id?id=" + word
+                val bodyText = URL(url).readText()
+                withContext(Dispatchers.Main) {
+                    //Toast.makeText(this@ChooseWordsFourActivity, bodyText, Toast.LENGTH_SHORT).show()
+                    if (bodyText == """{"error":"Sonuç bulunamadı"}""") {
+                        Toast.makeText(this@ChooseWordsFourActivity, "$word geçerli bir kelime değil!!!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                for (snapshot in dataSnapshot.children) {
+                                    val user_1 = snapshot.child("user_1").value.toString()
+                                    val user_1_word = snapshot.child("user_1_word").value.toString()
+                                    val user_2_word = snapshot.child("user_2_word").value.toString()
+                                    if (user_1 == username) {
+                                        db.child("games").child(snapshot.key!!).child("user_1_word").setValue(word)
+                                    } else {
+                                        db.child("games").child(snapshot.key!!).child("user_2_word").setValue(word)
+                                    }
+
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+                        })
+
+                        binding.textView5.visibility = android.view.View.INVISIBLE
+                        binding.btn41.visibility = android.view.View.INVISIBLE
+                        binding.et41.visibility = android.view.View.INVISIBLE
+                        binding.btn42.visibility = android.view.View.INVISIBLE
+                        binding.et42.visibility = android.view.View.INVISIBLE
+                        binding.btn43.visibility = android.view.View.INVISIBLE
+                        binding.et43.visibility = android.view.View.INVISIBLE
+                        binding.btn44.visibility = android.view.View.INVISIBLE
+                        binding.et44.visibility = android.view.View.INVISIBLE
+                        binding.btnConfirm4.visibility = android.view.View.INVISIBLE
+                        binding.txtWait.visibility = android.view.View.VISIBLE
+                    }
+                }
+            }
         }
+
+        val timer = object: CountDownTimer(60000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsRemaining = millisUntilFinished / 1000
+                binding.etKronometre.setText(secondsRemaining.toString())
+            }
+
+            override fun onFinish() {
+                val mod = intent.getIntExtra("mod", 0)
+                binding.etKronometre.setText("0")
+                val intent = Intent(this@ChooseWordsFourActivity, ChooseWordsFourActivity::class.java)
+                intent.putExtra("username", username)
+                intent.putExtra("mod", mod)
+                intent.putExtra("request_to", request_to)
+                intent.putExtra("request_from", request_from)
+                startActivity(intent)
+            }
+        }
+        timer.start()
+
     }
 
 }

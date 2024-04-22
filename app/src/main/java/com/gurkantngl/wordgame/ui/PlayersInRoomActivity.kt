@@ -303,6 +303,8 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                     db.child("games").push().setValue(userMap)
                                         .addOnSuccessListener {
                                             val intent = Intent(this@PlayersInRoomActivity, activityClass)
+                                            intent.putExtra("request_to", request_to)
+                                            intent.putExtra("request_from", request_from)
                                             intent.putExtra("username", username)
                                             intent.putExtra("mod", mod)
                                             startActivity(intent)

@@ -8,10 +8,38 @@
     tools:context=".ui.ChooseWordsFourActivity">
 
     <TextView
+        android:id="@+id/txtWait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:text="Rakibin kelime seçmesi bekleniyor..."
+        android:textSize="20sp"
+        android:typeface="serif"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_kronometre"
+        android:layout_width="51dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txtUsername4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:textSize="16sp"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
         android:text="Rakibinize sormak istediğiniz kelimeyi girin"
+        android:textSize="16sp"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,8 +71,8 @@
         android:layout_width="60dp"
         android:layout_height="75dp"
         android:ems="10"
-        android:inputType="text"
         android:gravity="center"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/btn41"
         app:layout_constraintEnd_toEndOf="@+id/btn41"
         app:layout_constraintStart_toStartOf="@+id/btn41"
@@ -63,8 +93,8 @@
         android:layout_width="60dp"
         android:layout_height="75dp"
         android:ems="10"
-        android:inputType="text"
         android:gravity="center"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/btn42"
         app:layout_constraintEnd_toEndOf="@+id/btn42"
         app:layout_constraintHorizontal_bias="0.0"
@@ -87,8 +117,8 @@
         android:layout_width="60dp"
         android:layout_height="75dp"
         android:ems="10"
-        android:inputType="text"
         android:gravity="center"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/btn43"
         app:layout_constraintEnd_toEndOf="@+id/btn43"
         app:layout_constraintStart_toStartOf="@+id/btn43"
@@ -100,9 +130,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="200dp"
-        android:layout_marginEnd="60dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn43"
         app:layout_constraintTop_toTopOf="parent" />
 
