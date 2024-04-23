@@ -119,10 +119,7 @@ class FourGameActivity : AppCompatActivity() {
                                                 R.color.green
                                             ), PorterDuff.Mode.SRC_IN
                                         )
-                                    } else if (question.contains((textList[i].text.toString())) && !indices.contains(
-                                            i
-                                        )
-                                    ) {
+                                    } else if (question.contains((textList[i].text.toString())) && !indices.contains(i)) {
                                         textList[i].background.setColorFilter(
                                             ContextCompat.getColor(
                                                 this@FourGameActivity,
