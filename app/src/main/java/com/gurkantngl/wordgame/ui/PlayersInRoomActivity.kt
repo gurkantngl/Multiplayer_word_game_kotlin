@@ -28,12 +28,9 @@ class PlayersInRoomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         binding = ActivityPlayersInRoomBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         initUI()
-
     }
 
     override fun onDestroy() {
