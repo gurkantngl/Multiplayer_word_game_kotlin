@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_theme"
     tools:context=".ui.FiveGameActivity">
 
     <Button
@@ -13,8 +14,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -34,8 +35,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_1_1"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_1_1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -55,8 +56,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_1_2"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_1_2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -76,8 +77,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_1_3"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_1_3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -98,9 +99,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn5_1_4"
-        android:background="@drawable/rounded_button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -119,8 +120,8 @@
         android:layout_width="60dp"
         android:layout_height="75dp"
         android:layout_marginStart="30dp"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="134dp" />
 
     <EditText
@@ -140,8 +141,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_2_1"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_2_1"
         app:layout_constraintTop_toBottomOf="@+id/btn5_1_2" />
 
     <EditText
@@ -161,8 +162,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_2_2"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_2_2"
         app:layout_constraintTop_toBottomOf="@+id/btn5_1_3" />
 
     <EditText
@@ -182,8 +183,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_2_3"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_2_3"
         app:layout_constraintTop_toBottomOf="@+id/btn5_1_4" />
 
     <EditText
@@ -204,9 +205,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn5_2_4"
-        android:background="@drawable/rounded_button"
         app:layout_constraintTop_toBottomOf="@+id/btn5_1_5" />
 
     <EditText
@@ -226,8 +227,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn5_2_1" />
 
     <EditText
@@ -247,8 +248,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_3_1"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_3_1"
         app:layout_constraintTop_toBottomOf="@+id/btn5_2_2" />
 
     <EditText
@@ -268,8 +269,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_3_2"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_3_2"
         app:layout_constraintTop_toBottomOf="@+id/btn5_2_3" />
 
     <EditText
@@ -289,8 +290,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_3_3"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_3_3"
         app:layout_constraintTop_toBottomOf="@+id/btn5_2_4" />
 
     <EditText
@@ -311,9 +312,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn5_3_4"
-        android:background="@drawable/rounded_button"
         app:layout_constraintTop_toBottomOf="@+id/btn5_2_5" />
 
     <EditText
@@ -333,8 +334,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn5_3_1" />
 
     <EditText
@@ -354,8 +355,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_4_1"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_4_1"
         app:layout_constraintTop_toBottomOf="@+id/btn5_3_2" />
 
     <EditText
@@ -375,8 +376,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_4_2"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_4_2"
         app:layout_constraintTop_toBottomOf="@+id/btn5_3_3" />
 
     <EditText
@@ -396,8 +397,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_4_3"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_4_3"
         app:layout_constraintTop_toBottomOf="@+id/btn5_3_4" />
 
     <EditText
@@ -418,9 +419,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn5_4_4"
-        android:background="@drawable/rounded_button"
         app:layout_constraintTop_toBottomOf="@+id/btn5_3_5" />
 
     <EditText
@@ -440,8 +441,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn5_4_1" />
 
     <EditText
@@ -461,8 +462,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_5_1"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_5_1"
         app:layout_constraintTop_toBottomOf="@+id/btn5_4_2" />
 
     <EditText
@@ -482,8 +483,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_5_2"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_5_2"
         app:layout_constraintTop_toBottomOf="@+id/btn5_4_3" />
 
     <EditText
@@ -503,8 +504,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn5_5_3"
         android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toEndOf="@+id/btn5_5_3"
         app:layout_constraintTop_toBottomOf="@+id/btn5_4_4" />
 
     <EditText
@@ -525,9 +526,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn5_5_4"
-        android:background="@drawable/rounded_button"
         app:layout_constraintTop_toBottomOf="@+id/btn5_4_5" />
 
     <EditText

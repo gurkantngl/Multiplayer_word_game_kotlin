@@ -13,6 +13,9 @@ import androidx.compose.ui.text.toUpperCase
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.gurkantngl.wordgame.R
 import com.gurkantngl.wordgame.databinding.ActivityFourGameBinding
@@ -74,8 +77,39 @@ class FourGameActivity : AppCompatActivity() {
     }
 
     private fun word(textList : List<EditText>, hak : Int) {
+        var username = intent.getStringExtra("username")
         textList[textList.size-1].setOnEditorActionListener{ v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
+                db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (snapshot in dataSnapshot.children) {
+                            var question = ""
+                            var word = ""
+                            val user_1 = snapshot.child("user_1").value.toString()
+                            val user_1_word = snapshot.child("user_1_word").value.toString()
+                            val user_2 = snapshot.child("user_2").value.toString()
+                            val user_2_word = snapshot.child("user_2_word").value.toString()
+                            if (user_1 == username) {
+                                question = user_2_word
+                            }else {
+                                question = user_1_word
+                            }
+                            for (editText in textList) {
+                                word += editText.text.toString()
+                            }
+                            if (word == question) {
+
+                            }
+
+
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+
                 Toast.makeText(this, "Enter a basıldı", Toast.LENGTH_SHORT).show()
                 setEditTexts(hak+1)
                 true

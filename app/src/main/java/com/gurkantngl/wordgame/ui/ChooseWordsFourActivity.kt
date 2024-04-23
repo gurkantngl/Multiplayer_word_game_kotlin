@@ -29,6 +29,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityChooseWordsFourBinding
     private val db = Firebase.database.reference
+    private lateinit var timer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         leave_room()
+        timer.cancel()
     }
 
     override fun onPause() {
@@ -216,7 +218,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
             }
         }
 
-        val timer = object: CountDownTimer(60000, 1000) {
+        timer = object: CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = millisUntilFinished / 1000
                 binding.etKronometre.setText(secondsRemaining.toString())
