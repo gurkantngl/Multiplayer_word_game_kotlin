@@ -14,6 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:textColor="@color/white"
+        android:textSize="18sp"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,8 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:textColor="@color/white"
         android:text="Rakibinize sormak istediğiniz kelimeyi girin"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -124,10 +128,11 @@
 
     <Button
         android:id="@+id/btn_confirm7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_marginTop="100dp"
         android:text="Onayla"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout3" />
