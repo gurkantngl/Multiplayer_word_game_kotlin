@@ -8,375 +8,337 @@
     android:background="@color/app_theme"
     tools:context=".ui.SixGameActivity">
 
-    <Button
-        android:id="@+id/btn6_1_1"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn6_1_2"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_1_1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn6_1_3"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_1_2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn6_1_4"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_1_3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn6_1_5"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_1_4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn6_1_6"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_button"
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:columnCount="6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn6_1_5"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn6_2_1"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_1_1" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:rowCount="6">
 
-    <Button
-        android:id="@+id/btn6_2_2"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_2_1"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_1_2" />
+        <EditText
+            android:id="@+id/et6_1_1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_2_3"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_2_2"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_1_3" />
+        <EditText
+            android:id="@+id/et6_1_2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_2_4"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_2_3"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_1_4" />
+        <EditText
+            android:id="@+id/et6_1_3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_2_5"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_2_4"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_1_5" />
+        <EditText
+            android:id="@+id/et6_1_4"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_2_6"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn6_2_5"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_1_6" />
+        <EditText
+            android:id="@+id/et6_1_5"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_3_1"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_2_1" />
+        <EditText
+            android:id="@+id/et6_1_6"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_3_2"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_3_1"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_2_2" />
+        <EditText
+            android:id="@+id/et6_2_1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_3_3"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_3_2"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_2_3" />
+        <EditText
+            android:id="@+id/et6_2_2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_3_4"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_3_3"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_2_4" />
+        <EditText
+            android:id="@+id/et6_2_3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_3_5"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_3_4"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_2_5" />
+        <EditText
+            android:id="@+id/et6_2_4"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_3_6"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn6_3_5"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_2_6" />
+        <EditText
+            android:id="@+id/et6_2_5"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_4_1"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_3_1" />
+        <EditText
+            android:id="@+id/et6_2_6"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_4_2"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_4_1"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_3_2" />
+        <EditText
+            android:id="@+id/et6_3_1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_4_3"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_4_2"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_3_3" />
+        <EditText
+            android:id="@+id/et6_3_2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_4_4"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_4_3"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_3_4" />
+        <EditText
+            android:id="@+id/et6_3_3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_4_5"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_4_4"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_3_5" />
+        <EditText
+            android:id="@+id/et6_3_4"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_4_6"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn6_4_5"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_3_6" />
+        <EditText
+            android:id="@+id/et6_3_5"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_5_1"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_4_1" />
+        <EditText
+            android:id="@+id/et6_3_6"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_5_2"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_5_1"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_4_2" />
+        <EditText
+            android:id="@+id/et6_4_1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_5_3"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_5_2"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_4_3" />
+        <EditText
+            android:id="@+id/et6_4_2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_5_4"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_5_3"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_4_4" />
+        <EditText
+            android:id="@+id/et6_4_3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_5_5"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_5_4"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_4_5" />
+        <EditText
+            android:id="@+id/et6_4_4"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_5_6"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn6_5_5"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_4_6" />
+        <EditText
+            android:id="@+id/et6_4_5"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_6_1"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_5_1" />
+        <EditText
+            android:id="@+id/et6_4_6"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_6_2"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_6_1"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_5_2" />
+        <EditText
+            android:id="@+id/et6_5_1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_6_3"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_6_2"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_5_3" />
+        <EditText
+            android:id="@+id/et_6_5_2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_6_4"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_6_3"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_5_4" />
+        <EditText
+            android:id="@+id/et6_5_3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_6_5"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn6_6_4"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_5_5" />
+        <EditText
+            android:id="@+id/et6_5_4"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn6_6_6"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn6_6_5"
-        app:layout_constraintTop_toBottomOf="@+id/btn6_5_6" />
+        <EditText
+            android:id="@+id/et6_5_5"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et6_5_6"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et6_6_1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et6_6_2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et6_6_3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et6_6_4"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et6_6_5"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et6_6_6"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:inputType="text" />
+    </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
