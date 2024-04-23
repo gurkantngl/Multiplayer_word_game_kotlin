@@ -119,6 +119,23 @@ class FourGameActivity : AppCompatActivity() {
                                                 R.color.green
                                             ), PorterDuff.Mode.SRC_IN
                                         )
+                                    } else if (question.contains((textList[i].text.toString())) && !indices.contains(
+                                            i
+                                        )
+                                    ) {
+                                        textList[i].background.setColorFilter(
+                                            ContextCompat.getColor(
+                                                this@FourGameActivity,
+                                                R.color.yellow
+                                            ), PorterDuff.Mode.SRC_IN
+                                        )
+                                    } else {
+                                        textList[i].background.setColorFilter(
+                                            ContextCompat.getColor(
+                                                this@FourGameActivity,
+                                                R.color.gray
+                                            ), PorterDuff.Mode.SRC_IN
+                                        )
                                     }
                                 }
                             }
