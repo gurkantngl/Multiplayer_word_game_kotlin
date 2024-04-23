@@ -30,6 +30,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
     private lateinit var binding : ActivityChooseWordsFourBinding
     private val db = Firebase.database.reference
     private lateinit var timer: CountDownTimer
+    private lateinit var gameListener: ValueEventListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,7 @@ class ChooseWordsFourActivity : AppCompatActivity() {
         super.onDestroy()
         leave_room()
         timer.cancel()
+        db.child("games").removeEventListener(gameListener)
     }
 
     override fun onPause() {
@@ -221,14 +223,47 @@ class ChooseWordsFourActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                val mod = intent.getIntExtra("mod", 0)
-                binding.etKronometre.setText("0")
-                val intent = Intent(this@ChooseWordsFourActivity, ChooseWordsFourActivity::class.java)
-                intent.putExtra("username", username)
-                intent.putExtra("mod", mod)
-                intent.putExtra("request_to", request_to)
-                intent.putExtra("request_from", request_from)
-                startActivity(intent)
+
+                gameListener = db.child("games").addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (snapshot in dataSnapshot.children) {
+                            val user_1 = snapshot.child("user_1").value.toString()
+                            val user_2 = snapshot.child("user_2").value.toString()
+                            val user_1_word = snapshot.child("user_1_word").value.toString()
+                            val user_2_word = snapshot.child("user_2_word").value.toString()
+
+                            if(user_1_word.length == 0 && user_2_word.length > 0) {
+                                val intent = Intent(this@ChooseWordsFourActivity, Winner1Activity::class.java)
+                                intent.putExtra("username", username)
+                                intent.putExtra("winner", user_2)
+                                startActivity(intent)
+                                finish()
+                            }else if (user_2_word.length == 0 && user_1_word.length > 0) {
+                                val intent = Intent(this@ChooseWordsFourActivity, Winner1Activity::class.java)
+                                intent.putExtra("username", username)
+                                intent.putExtra("winner", user_1)
+                                startActivity(intent)
+                                finish()
+                            }else {
+                                binding.etKronometre.setText("0")
+                                val intent =
+                                    Intent(this@ChooseWordsFourActivity, ChooseWordsFourActivity::class.java)
+                                intent.putExtra("username", username)
+                                intent.putExtra("mod", mod)
+                                intent.putExtra("request_to", request_to)
+                                intent.putExtra("request_from", request_from)
+                                timer.cancel()
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
             }
         }
         timer.start()

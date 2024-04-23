@@ -15,6 +15,9 @@
         android:theme="@style/Theme.WordGame"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Winner1Activity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SevenGameActivity"
             android:exported="false" />
         <activity
