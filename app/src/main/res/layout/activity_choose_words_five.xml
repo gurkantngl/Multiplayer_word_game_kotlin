@@ -48,6 +48,7 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:textColor="@color/black"
             android:gravity="center"
             android:inputType="text" />
 
@@ -60,6 +61,7 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="text"
+            android:textColor="@color/black"
             app:layout_column="1"
             app:layout_row="0" />
 
@@ -72,6 +74,7 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="text"
+            android:textColor="@color/black"
             app:layout_column="2"
             app:layout_row="0" />
 
@@ -83,6 +86,7 @@
             android:background="@drawable/oval_background"
             android:ems="10"
             android:gravity="center"
+            android:textColor="@color/black"
             android:inputType="text"
             app:layout_column="3"
             app:layout_row="0" />
@@ -95,6 +99,7 @@
             android:gravity="center"
             android:inputType="text"
             app:layout_column="4"
+            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             app:layout_row="0" />
     </androidx.gridlayout.widget.GridLayout>

@@ -1,5 +1,6 @@
 package com.gurkantngl.wordgame.ui
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
@@ -9,7 +10,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.collection.mutableVectorOf
 import androidx.compose.ui.text.toUpperCase
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
@@ -98,7 +101,26 @@ class FourGameActivity : AppCompatActivity() {
                                 word += editText.text.toString()
                             }
                             if (word == question) {
-
+                                for (editText in textList) {
+                                    editText.background.setColorFilter(ContextCompat.getColor(this@FourGameActivity, R.color.green), PorterDuff.Mode.SRC_IN)
+                                }
+                            }else {
+                                for(i in 0 until textList.size) {
+                                    val indices = mutableListOf<Int>()
+                                    for ((index, value) in question.withIndex()) {
+                                        if (value.toString() == textList[i].text.toString()) {
+                                            indices.add(index)
+                                        }
+                                    }
+                                    if (indices.contains(i)) {
+                                        textList[i].background.setColorFilter(
+                                            ContextCompat.getColor(
+                                                this@FourGameActivity,
+                                                R.color.green
+                                            ), PorterDuff.Mode.SRC_IN
+                                        )
+                                    }
+                                }
                             }
 
 

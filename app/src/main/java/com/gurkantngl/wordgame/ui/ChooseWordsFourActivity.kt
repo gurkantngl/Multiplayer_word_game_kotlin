@@ -203,13 +203,9 @@ class ChooseWordsFourActivity : AppCompatActivity() {
                         })
 
                         binding.textView5.visibility = android.view.View.INVISIBLE
-                        binding.btn41.visibility = android.view.View.INVISIBLE
                         binding.et41.visibility = android.view.View.INVISIBLE
-                        binding.btn42.visibility = android.view.View.INVISIBLE
                         binding.et42.visibility = android.view.View.INVISIBLE
-                        binding.btn43.visibility = android.view.View.INVISIBLE
                         binding.et43.visibility = android.view.View.INVISIBLE
-                        binding.btn44.visibility = android.view.View.INVISIBLE
                         binding.et44.visibility = android.view.View.INVISIBLE
                         binding.btnConfirm4.visibility = android.view.View.INVISIBLE
                         binding.txtWait.visibility = android.view.View.VISIBLE
