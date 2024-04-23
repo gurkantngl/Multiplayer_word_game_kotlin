@@ -163,7 +163,7 @@ class SixGameActivity : AppCompatActivity() {
         })
 
         binding.btnRakip6.setOnClickListener{
-            val intent = Intent(this, RivalScreenActivityFour::class.java)
+            val intent = Intent(this, RivalScreenActivitySix::class.java)
             intent.putExtra("username", username)
             startActivity(intent)
         }
