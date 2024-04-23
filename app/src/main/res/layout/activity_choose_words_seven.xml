@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,169 +23,112 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
+        android:textColor="@color/white"
         android:text="Rakibinize sormak istediğiniz kelimeyi girin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn71"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et71"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/btn71"
-        app:layout_constraintEnd_toEndOf="@+id/btn71"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn71" />
-
-    <Button
-        android:id="@+id/btn72"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn71"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et72"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/btn72"
-        app:layout_constraintEnd_toEndOf="@+id/btn72"
-        app:layout_constraintStart_toEndOf="@+id/btn71"
-        app:layout_constraintTop_toTopOf="@+id/btn72" />
-
-    <Button
-        android:id="@+id/btn73"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn72"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et73"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/btn73"
-        app:layout_constraintEnd_toEndOf="@+id/btn73"
-        app:layout_constraintStart_toEndOf="@+id/btn72"
-        app:layout_constraintTop_toTopOf="@+id/btn73" />
-
-    <Button
-        android:id="@+id/btn74"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn73"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et74"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/btn74"
-        app:layout_constraintEnd_toEndOf="@+id/btn74"
-        app:layout_constraintStart_toEndOf="@+id/btn73"
-        app:layout_constraintTop_toTopOf="@+id/btn74" />
-
-    <Button
-        android:id="@+id/btn75"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn74"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et75"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/btn75"
-        app:layout_constraintEnd_toEndOf="@+id/btn75"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@+id/btn74"
-        app:layout_constraintTop_toTopOf="@+id/btn75" />
-
-    <Button
-        android:id="@+id/btn76"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btn75"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et76"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/btn76"
-        app:layout_constraintEnd_toStartOf="@+id/btn77"
-        app:layout_constraintStart_toEndOf="@+id/btn75"
-        app:layout_constraintTop_toTopOf="@+id/btn76" />
-
-    <Button
-        android:id="@+id/btn77"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="3dp"
-        android:background="@drawable/rounded_button"
+        app:columnCount="7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn76"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rowCount="1">
 
-    <EditText
-        android:id="@+id/et77"
-        android:layout_width="58dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/btn77"
-        app:layout_constraintEnd_toEndOf="@+id/btn77"
-        app:layout_constraintStart_toEndOf="@+id/btn76"
-        app:layout_constraintTop_toTopOf="@+id/btn77" />
+        <EditText
+            android:id="@+id/et71"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et72"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+        <EditText
+            android:id="@+id/et73"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text"
+            app:layout_column="2"
+            app:layout_row="0" />
+
+        <EditText
+            android:id="@+id/et74"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text"
+            app:layout_column="3"
+            app:layout_row="0" />
+
+        <EditText
+            android:id="@+id/et75"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text"
+            app:layout_column="4"
+            app:layout_row="0" />
+
+        <EditText
+            android:id="@+id/et76"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text"
+            app:layout_column="5"
+            app:layout_row="0" />
+
+        <EditText
+            android:id="@+id/et77"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:background="@drawable/oval_background"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text"
+            app:layout_column="6"
+            app:layout_row="0" />
+    </androidx.gridlayout.widget.GridLayout>
 
     <Button
         android:id="@+id/btn_confirm7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="100dp"
         android:text="Onayla"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn74" />
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
