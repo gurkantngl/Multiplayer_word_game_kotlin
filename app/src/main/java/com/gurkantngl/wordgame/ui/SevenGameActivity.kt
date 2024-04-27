@@ -7,6 +7,7 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -19,6 +20,11 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.gurkantngl.wordgame.R
 import com.gurkantngl.wordgame.databinding.ActivitySevenGameBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.URL
 
 class SevenGameActivity : AppCompatActivity() {
 
@@ -119,7 +125,7 @@ class SevenGameActivity : AppCompatActivity() {
         }
     }
     private fun word(textList : List<EditText>, hak : Int) {
-        var username = intent.getStringExtra("username")
+        val username = intent.getStringExtra("username")
         textList[textList.size-1].setOnEditorActionListener{ v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
@@ -129,7 +135,6 @@ class SevenGameActivity : AppCompatActivity() {
                             var word = ""
                             val user_1 = snapshot.child("user_1").value.toString()
                             val user_1_word = snapshot.child("user_1_word").value.toString()
-                            val user_2 = snapshot.child("user_2").value.toString()
                             val user_2_word = snapshot.child("user_2_word").value.toString()
                             if (user_1 == username) {
                                 question = user_2_word
@@ -139,44 +144,56 @@ class SevenGameActivity : AppCompatActivity() {
                             for (editText in textList) {
                                 word += editText.text.toString()
                             }
-                            if (word == question) {
-                                for (editText in textList) {
-                                    editText.background.setColorFilter(ContextCompat.getColor(this@SevenGameActivity, R.color.green), PorterDuff.Mode.SRC_IN)
-                                }
-                            }else {
-                                for(i in 0 until textList.size) {
-                                    val indices = mutableListOf<Int>()
-                                    for ((index, value) in question.withIndex()) {
-                                        if (value.toString() == textList[i].text.toString()) {
-                                            indices.add(index)
+                            GlobalScope.launch(Dispatchers.IO) {
+                                val url = "https://sozluk.gov.tr/gts_id?id=" + word
+                                val bodyText = URL(url).readText()
+                                withContext(Dispatchers.Main) {
+                                    if (bodyText == """{"error":"Sonuç bulunamadı"}""") {
+                                        Toast.makeText(this@SevenGameActivity, "$word geçerli bir kelime değil!!!", Toast.LENGTH_SHORT).show()
+                                        for (editText in textList) {
+                                            editText.text = null
                                         }
-                                    }
-                                    if (indices.contains(i)) {
-                                        textList[i].background.setColorFilter(
-                                            ContextCompat.getColor(
-                                                this@SevenGameActivity,
-                                                R.color.green
-                                            ), PorterDuff.Mode.SRC_IN
-                                        )
-                                    } else if (question.contains((textList[i].text.toString())) && !indices.contains(i)) {
-                                        textList[i].background.setColorFilter(
-                                            ContextCompat.getColor(
-                                                this@SevenGameActivity,
-                                                R.color.yellow
-                                            ), PorterDuff.Mode.SRC_IN
-                                        )
                                     } else {
-                                        textList[i].background.setColorFilter(
-                                            ContextCompat.getColor(
-                                                this@SevenGameActivity,
-                                                R.color.gray
-                                            ), PorterDuff.Mode.SRC_IN
-                                        )
+                                        if (word == question) {
+                                            for (editText in textList) {
+                                                editText.background.setColorFilter(ContextCompat.getColor(this@SevenGameActivity, R.color.green), PorterDuff.Mode.SRC_IN)
+                                            }
+                                        }else {
+                                            for(i in 0 until textList.size) {
+                                                val indices = mutableListOf<Int>()
+                                                for ((index, value) in question.withIndex()) {
+                                                    if (value.toString() == textList[i].text.toString()) {
+                                                        indices.add(index)
+                                                    }
+                                                }
+                                                if (indices.contains(i)) {
+                                                    textList[i].background.setColorFilter(
+                                                        ContextCompat.getColor(
+                                                            this@SevenGameActivity,
+                                                            R.color.green
+                                                        ), PorterDuff.Mode.SRC_IN
+                                                    )
+                                                } else if (question.contains((textList[i].text.toString())) && !indices.contains(i)) {
+                                                    textList[i].background.setColorFilter(
+                                                        ContextCompat.getColor(
+                                                            this@SevenGameActivity,
+                                                            R.color.yellow
+                                                        ), PorterDuff.Mode.SRC_IN
+                                                    )
+                                                } else {
+                                                    textList[i].background.setColorFilter(
+                                                        ContextCompat.getColor(
+                                                            this@SevenGameActivity,
+                                                            R.color.gray
+                                                        ), PorterDuff.Mode.SRC_IN
+                                                    )
+                                                }
+                                            }
+                                            setEditTexts(hak+1)
+                                        }
                                     }
                                 }
                             }
-
-
                         }
                     }
 
@@ -184,7 +201,8 @@ class SevenGameActivity : AppCompatActivity() {
                         TODO("Not yet implemented")
                     }
                 })
-                setEditTexts(hak+1)
+
+
                 true
             } else {
                 false

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
@@ -20,6 +21,11 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.gurkantngl.wordgame.R
 import com.gurkantngl.wordgame.databinding.ActivityFourGameBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.URL
 
 class FourGameActivity : AppCompatActivity() {
 
@@ -95,44 +101,56 @@ class FourGameActivity : AppCompatActivity() {
                             for (editText in textList) {
                                 word += editText.text.toString()
                             }
-                            if (word == question) {
-                                for (editText in textList) {
-                                    editText.background.setColorFilter(ContextCompat.getColor(this@FourGameActivity, R.color.green), PorterDuff.Mode.SRC_IN)
-                                }
-                            }else {
-                                for(i in 0 until textList.size) {
-                                    val indices = mutableListOf<Int>()
-                                    for ((index, value) in question.withIndex()) {
-                                        if (value.toString() == textList[i].text.toString()) {
-                                            indices.add(index)
+                            GlobalScope.launch(Dispatchers.IO) {
+                                val url = "https://sozluk.gov.tr/gts_id?id=" + word
+                                val bodyText = URL(url).readText()
+                                withContext(Dispatchers.Main) {
+                                    if (bodyText == """{"error":"Sonuç bulunamadı"}""") {
+                                        Toast.makeText(this@FourGameActivity, "$word geçerli bir kelime değil!!!", Toast.LENGTH_SHORT).show()
+                                        for (editText in textList) {
+                                            editText.text = null
                                         }
-                                    }
-                                    if (indices.contains(i)) {
-                                        textList[i].background.setColorFilter(
-                                            ContextCompat.getColor(
-                                                this@FourGameActivity,
-                                                R.color.green
-                                            ), PorterDuff.Mode.SRC_IN
-                                        )
-                                    } else if (question.contains((textList[i].text.toString())) && !indices.contains(i)) {
-                                        textList[i].background.setColorFilter(
-                                            ContextCompat.getColor(
-                                                this@FourGameActivity,
-                                                R.color.yellow
-                                            ), PorterDuff.Mode.SRC_IN
-                                        )
                                     } else {
-                                        textList[i].background.setColorFilter(
-                                            ContextCompat.getColor(
-                                                this@FourGameActivity,
-                                                R.color.gray
-                                            ), PorterDuff.Mode.SRC_IN
-                                        )
+                                        if (word == question) {
+                                            for (editText in textList) {
+                                                editText.background.setColorFilter(ContextCompat.getColor(this@FourGameActivity, R.color.green), PorterDuff.Mode.SRC_IN)
+                                            }
+                                        }else {
+                                            for(i in 0 until textList.size) {
+                                                val indices = mutableListOf<Int>()
+                                                for ((index, value) in question.withIndex()) {
+                                                    if (value.toString() == textList[i].text.toString()) {
+                                                        indices.add(index)
+                                                    }
+                                                }
+                                                if (indices.contains(i)) {
+                                                    textList[i].background.setColorFilter(
+                                                        ContextCompat.getColor(
+                                                            this@FourGameActivity,
+                                                            R.color.green
+                                                        ), PorterDuff.Mode.SRC_IN
+                                                    )
+                                                } else if (question.contains((textList[i].text.toString())) && !indices.contains(i)) {
+                                                    textList[i].background.setColorFilter(
+                                                        ContextCompat.getColor(
+                                                            this@FourGameActivity,
+                                                            R.color.yellow
+                                                        ), PorterDuff.Mode.SRC_IN
+                                                    )
+                                                } else {
+                                                    textList[i].background.setColorFilter(
+                                                        ContextCompat.getColor(
+                                                            this@FourGameActivity,
+                                                            R.color.gray
+                                                        ), PorterDuff.Mode.SRC_IN
+                                                    )
+                                                }
+                                            }
+                                            setEditTexts(hak+1)
+                                        }
                                     }
                                 }
                             }
-
-
                         }
                     }
 
@@ -141,8 +159,7 @@ class FourGameActivity : AppCompatActivity() {
                     }
                 })
 
-                Toast.makeText(this, "Enter a basıldı", Toast.LENGTH_SHORT).show()
-                setEditTexts(hak+1)
+
                 true
             } else {
                 false
