@@ -55,10 +55,9 @@
         android:layout_marginTop="140dp"
         android:text="Rakibinize sormak istediğiniz kelimeyi girin"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

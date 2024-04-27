@@ -51,6 +51,8 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:textColor="@color/black"
+            android:maxLength="1"
             android:gravity="center"
             android:inputType="text" />
 
@@ -62,6 +64,8 @@
             android:background="@drawable/oval_background"
             android:ems="10"
             android:gravity="center"
+            android:textColor="@color/black"
+            android:maxLength="1"
             android:inputType="text"
             app:layout_column="1"
             app:layout_row="0" />
@@ -75,6 +79,8 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="text"
+            android:textColor="@color/black"
+            android:maxLength="1"
             app:layout_column="2"
             app:layout_row="0" />
 
@@ -87,6 +93,8 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="text"
+            android:textColor="@color/black"
+            android:maxLength="1"
             app:layout_column="3"
             app:layout_row="0" />
 
@@ -98,6 +106,8 @@
             android:background="@drawable/oval_background"
             android:ems="10"
             android:gravity="center"
+            android:textColor="@color/black"
+            android:maxLength="1"
             android:inputType="text"
             app:layout_column="4"
             app:layout_row="0" />
@@ -110,6 +120,8 @@
             android:background="@drawable/oval_background"
             android:ems="10"
             android:gravity="center"
+            android:textColor="@color/black"
+            android:maxLength="1"
             android:inputType="text"
             app:layout_column="5"
             app:layout_row="0" />
@@ -121,6 +133,8 @@
             android:background="@drawable/oval_background"
             android:ems="10"
             android:gravity="center"
+            android:textColor="@color/black"
+            android:maxLength="1"
             android:inputType="text"
             app:layout_column="6"
             app:layout_row="0" />

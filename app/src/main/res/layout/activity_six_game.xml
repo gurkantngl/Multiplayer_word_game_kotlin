@@ -25,6 +25,8 @@
             android:layout_marginRight="5dp"
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
+            android:maxLength="1"
+            android:gravity="center"
             android:ems="10"
             android:inputType="text" />
 
@@ -36,6 +38,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -46,6 +50,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -56,6 +62,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -66,6 +74,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -75,6 +85,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -85,6 +97,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -95,6 +109,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -105,6 +121,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -115,6 +133,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -125,6 +145,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -135,6 +157,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -145,6 +169,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -155,6 +181,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -165,6 +193,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -175,6 +205,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -185,6 +217,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -195,6 +229,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -205,6 +241,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -215,6 +253,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -225,6 +265,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -235,6 +277,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -245,6 +289,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -255,6 +301,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -265,6 +313,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -275,6 +325,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -285,6 +337,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -295,6 +349,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -305,6 +361,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -315,6 +373,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -325,6 +385,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -335,6 +397,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -345,6 +409,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -355,6 +421,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -365,6 +433,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
 
         <EditText
@@ -375,6 +445,8 @@
             android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
             android:inputType="text" />
     </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
