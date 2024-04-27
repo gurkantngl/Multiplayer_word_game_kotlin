@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.InputFilter
 import android.text.InputType
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,9 +22,15 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.gurkantngl.wordgame.R
 import com.gurkantngl.wordgame.databinding.ActivityChooseWordsSevenBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.io.IOException
+import java.net.URL
+import kotlin.random.Random
 
 
 class ChooseWordsSevenActivity : AppCompatActivity() {
@@ -68,7 +75,6 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
         super.onResume()
         val username = intent.getStringExtra("username")
         val mod = intent.getIntExtra("mod", 0)
-
         var roomList = listOf(
             "mod_1_rooms",
             "mod_2_rooms",
@@ -126,8 +132,12 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
             binding.et77
         )
 
-        for (i in 0 until textList.size) {
-            textList[i].filters = arrayOf<InputFilter>(InputFilter.LengthFilter(1))
+        if (mod == 1) {
+            val chars = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
+            val randomIndex = Random.nextInt(0, 7)
+            val randomChar = chars[Random.nextInt(0, chars.length)]
+            textList[randomIndex].setText(randomChar.toString())
+            textList[randomIndex].isEnabled = false
         }
 
         for(i in 0 until textList.size) {
@@ -190,6 +200,97 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
+            GlobalScope.launch(Dispatchers.IO) {
+                val url = "https://sozluk.gov.tr/gts_id?id=" + word
+                val bodyText = URL(url).readText()
+                withContext(Dispatchers.Main) {
+                    if (bodyText == """{"error":"Sonuç bulunamadı"}""") {
+                        Toast.makeText(this@ChooseWordsSevenActivity, "$word geçerli bir kelime değil!!!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                for (snapshot in dataSnapshot.children) {
+                                    val user_1 = snapshot.child("user_1").value.toString()
+                                    val user_1_word = snapshot.child("user_1_word").value.toString()
+                                    val user_2_word = snapshot.child("user_2_word").value.toString()
+                                    if (user_1 == username) {
+                                        db.child("games").child(snapshot.key!!).child("user_1_word").setValue(word)
+                                    } else {
+                                        db.child("games").child(snapshot.key!!).child("user_2_word").setValue(word)
+                                    }
+
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+                        })
+
+                        binding.txtWait7.visibility = View.INVISIBLE
+                        binding.et71.visibility = View.INVISIBLE
+                        binding.et72.visibility = View.INVISIBLE
+                        binding.et73.visibility = View.INVISIBLE
+                        binding.et74.visibility = View.INVISIBLE
+                        binding.et75.visibility = View.INVISIBLE
+                        binding.et76.visibility = View.INVISIBLE
+                        binding.et77.visibility = View.INVISIBLE
+                        binding.btnConfirm7.visibility = View.INVISIBLE
+                        binding.txtInfo7.visibility = View.VISIBLE
+                    }
+                }
+            }
         }
+        timer = object: CountDownTimer(60000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsRemaining = millisUntilFinished / 1000
+                binding.etKronometre7.setText(secondsRemaining.toString())
+            }
+
+            override fun onFinish() {
+
+                gameListener = db.child("games").addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (snapshot in dataSnapshot.children) {
+                            val user_1 = snapshot.child("user_1").value.toString()
+                            val user_2 = snapshot.child("user_2").value.toString()
+                            val user_1_word = snapshot.child("user_1_word").value.toString()
+                            val user_2_word = snapshot.child("user_2_word").value.toString()
+
+                            if(user_1_word.length == 0 && user_2_word.length > 0) {
+                                val intent = Intent(this@ChooseWordsSevenActivity, Winner1Activity::class.java)
+                                intent.putExtra("username", username)
+                                intent.putExtra("winner", user_2)
+                                startActivity(intent)
+                                finish()
+                            }else if (user_2_word.length == 0 && user_1_word.length > 0) {
+                                val intent = Intent(this@ChooseWordsSevenActivity, Winner1Activity::class.java)
+                                intent.putExtra("username", username)
+                                intent.putExtra("winner", user_1)
+                                startActivity(intent)
+                                finish()
+                            }else {
+                                binding.etKronometre7.setText("0")
+                                val intent =
+                                    Intent(this@ChooseWordsSevenActivity, ChooseWordsSixActivity::class.java)
+                                intent.putExtra("username", username)
+                                intent.putExtra("mod", mod)
+                                intent.putExtra("request_to", request_to)
+                                intent.putExtra("request_from", request_from)
+                                timer.cancel()
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+            }
+        }
+        timer.start()
     }
 }

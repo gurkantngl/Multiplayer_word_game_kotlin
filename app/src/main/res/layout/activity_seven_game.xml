@@ -11,7 +11,7 @@
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="50dp"
         app:columnCount="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,490 +23,490 @@
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_1_2"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_1_3"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_1_4"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_1_5"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_1_6"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_1_7"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_2_1"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_2_2"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_2_3"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_2_4"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_2_5"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_2_6"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_2_7"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_3_1"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_3_2"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_3_3"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_3_4"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_3_5"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_3_6"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_3_7"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_4_1"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_4_2"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_4_3"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_4_4"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_4_5"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_4_6"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_4_7"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_5_1"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_5_2"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_5_3"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_5_4"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_5_5"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_5_6"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_5_7"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_6_1"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_6_2"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_6_3"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_6_4"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_6_5"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_6_6"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_6_7"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_7_1"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_7_2"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_7_3"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_7_4"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_7_5"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_7_6"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et7_7_7"
             android:layout_width="50dp"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="@color/black" />
 
 
     </androidx.gridlayout.widget.GridLayout>

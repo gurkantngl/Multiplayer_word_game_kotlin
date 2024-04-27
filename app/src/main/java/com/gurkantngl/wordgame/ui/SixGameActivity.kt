@@ -26,7 +26,6 @@ class SixGameActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySixGameBinding
     private val db = Firebase.database.reference
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

@@ -60,7 +60,6 @@ class CharNumberActivity : AppCompatActivity() {
             startActivity(intent)
        }
         binding.btnNumber6.setOnClickListener {
-            Toast.makeText(this, "mod: $mod, kelime: 6", Toast.LENGTH_SHORT).show()
             join_room(6)
             val intent = Intent(this, PlayersInRoomActivity::class.java)
             intent.putExtra("mod", mod)

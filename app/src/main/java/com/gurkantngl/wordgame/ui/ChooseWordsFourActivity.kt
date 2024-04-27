@@ -24,6 +24,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
+import kotlin.random.Random
 
 class ChooseWordsFourActivity : AppCompatActivity() {
 
@@ -121,6 +122,13 @@ class ChooseWordsFourActivity : AppCompatActivity() {
             binding.et44
         )
 
+        if (mod == 1) {
+            val chars = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
+            val randomIndex = Random.nextInt(0, 4)
+            val randomChar = chars[Random.nextInt(0, chars.length)]
+            textList[randomIndex].setText(randomChar.toString())
+            textList[randomIndex].isEnabled = false
+        }
 
         for(i in 0 until textList.size) {
             textList[i].inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS

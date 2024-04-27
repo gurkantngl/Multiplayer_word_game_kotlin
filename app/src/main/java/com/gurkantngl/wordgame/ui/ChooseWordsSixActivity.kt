@@ -24,6 +24,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
+import kotlin.random.Random
 
 class ChooseWordsSixActivity : AppCompatActivity() {
 
@@ -122,6 +123,14 @@ class ChooseWordsSixActivity : AppCompatActivity() {
             binding.et66
         )
 
+        if (mod == 1) {
+            val chars = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
+            val randomIndex = Random.nextInt(0, 6)
+            val randomChar = chars[Random.nextInt(0, chars.length)]
+            textList[randomIndex].setText(randomChar.toString())
+            textList[randomIndex].isEnabled = false
+        }
+
         for(i in 0 until textList.size) {
             textList[i].inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
             textList[i].addTextChangedListener(object : TextWatcher {
@@ -141,9 +150,9 @@ class ChooseWordsSixActivity : AppCompatActivity() {
                     }
                     s?.let  {
                         if (it.length == 1 && i < textList.size - 1) {
-                            textList[i+1].requestFocus()
+                            textList[i + 1].requestFocus()
                         } else if (it.length == 0 && i > 0) {
-                            textList[i-1].requestFocus()
+                            textList[i - 1].requestFocus()
                         } else {
                             // Do nothing
                         }
@@ -173,6 +182,7 @@ class ChooseWordsSixActivity : AppCompatActivity() {
                         intent.putExtra("request_to", request_to)
                         intent.putExtra("request_from", request_from)
                         startActivity(intent)
+                        finish()
                     }
                 }
 
@@ -212,6 +222,8 @@ class ChooseWordsSixActivity : AppCompatActivity() {
                         binding.et62.visibility = View.INVISIBLE
                         binding.et63.visibility = View.INVISIBLE
                         binding.et64.visibility = View.INVISIBLE
+                        binding.et65.visibility = View.INVISIBLE
+                        binding.et66.visibility = View.INVISIBLE
                         binding.btnConfirm6.visibility = View.INVISIBLE
                         binding.txtInfo6.visibility = View.VISIBLE
                     }
@@ -270,5 +282,4 @@ class ChooseWordsSixActivity : AppCompatActivity() {
         }
         timer.start()
     }
-
 }
