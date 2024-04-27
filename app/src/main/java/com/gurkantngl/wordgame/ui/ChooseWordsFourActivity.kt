@@ -31,13 +31,13 @@ class ChooseWordsFourActivity : AppCompatActivity() {
     private val db = Firebase.database.reference
     private lateinit var timer: CountDownTimer
     private lateinit var gameListener: ValueEventListener
+    private lateinit var wordListener: ValueEventListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseWordsFourBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
-
         initUI()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -50,8 +50,14 @@ class ChooseWordsFourActivity : AppCompatActivity() {
         super.onDestroy()
         leave_room()
         timer.cancel()
-        db.child("games").removeEventListener(gameListener)
+        if (::gameListener.isInitialized) {
+            db.child("games").removeEventListener(gameListener)
+        }
+        if (::wordListener.isInitialized) {
+            db.child("games").removeEventListener(wordListener)
+        }
     }
+
 
     override fun onPause() {
         super.onPause()
@@ -68,7 +74,6 @@ class ChooseWordsFourActivity : AppCompatActivity() {
         )
 
         val users = ArrayList<String>()
-
         db.child(roomList[mod-1]).child("4").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -152,22 +157,24 @@ class ChooseWordsFourActivity : AppCompatActivity() {
             for(editText in textList) {
                 word += editText.text.toString()
             }
-
-
-            db.child("games").addValueEventListener(object : ValueEventListener {
+            wordListener = db.child("games").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    var user_1_word= ""
+                    var user_2_word= ""
                     for (snapshot in dataSnapshot.children) {
-                        val user_1_word = snapshot.child("user_1_word").value.toString()
-                        val user_2_word = snapshot.child("user_2_word").value.toString()
-                        if (user_1_word.length > 0 && user_2_word.length > 0) {
-                            val intent = Intent(this@ChooseWordsFourActivity, FourGameActivity::class.java)
-                            intent.putExtra("username", username)
-                            intent.putExtra("mod", mod)
-                            intent.putExtra("request_to", request_to)
-                            intent.putExtra("request_from", request_from)
-                            startActivity(intent)
-                            finish()
-                        }
+                        user_1_word = snapshot.child("user_1_word").value.toString()
+                        user_2_word = snapshot.child("user_2_word").value.toString()
+                    }
+                    if (user_1_word.length > 0 && user_2_word.length > 0) {
+                        val username = intent.getStringExtra("username")
+                        val mod = intent.getIntExtra("mod", 0)
+                        val intent = Intent(this@ChooseWordsFourActivity, FourGameActivity::class.java)
+                        intent.putExtra("username", username)
+                        intent.putExtra("mod", mod)
+                        intent.putExtra("request_to", request_to)
+                        intent.putExtra("request_from", request_from)
+                        startActivity(intent)
+                        finish()
                     }
                 }
 

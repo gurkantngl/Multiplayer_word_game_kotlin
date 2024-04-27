@@ -84,12 +84,6 @@ class FiveGameActivity : AppCompatActivity() {
             editOff(textList3)
             editOff(textList4)
             word(textList5, hak)
-        }else if (hak == 5) {
-            editOff(textList1)
-            editOff(textList2)
-            editOff(textList3)
-            editOff(textList4)
-            editOff(textList5)
         }
     }
 
@@ -138,10 +132,7 @@ class FiveGameActivity : AppCompatActivity() {
                                                 R.color.green
                                             ), PorterDuff.Mode.SRC_IN
                                         )
-                                    } else if (question.contains((textList[i].text.toString())) && !(indices.contains(
-                                            i
-                                        ))
-                                    ) {
+                                    } else if (question.contains((textList[i].text.toString())) && !(indices.contains(i))) {
                                         textList[i].background.setColorFilter(
                                             ContextCompat.getColor(
                                                 this@FiveGameActivity,
@@ -203,7 +194,7 @@ class FiveGameActivity : AppCompatActivity() {
     }
     private fun editOff(textList: List<EditText>) {
         for (i in 0 until textList.size) {
-            textList[i].isEnabled = false
+            textList[i].setEnabled(false)
         }
     }
 }

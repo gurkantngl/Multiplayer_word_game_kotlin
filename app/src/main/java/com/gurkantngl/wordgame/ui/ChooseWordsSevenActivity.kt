@@ -1,6 +1,8 @@
 package com.gurkantngl.wordgame.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.InputFilter
 import android.text.InputType
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.text.toLowerCase
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.play.integrity.internal.i
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -27,6 +30,9 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChooseWordsSevenBinding
     private val db = Firebase.database.reference
+    private lateinit var timer: CountDownTimer
+    private lateinit var gameListener: ValueEventListener
+    private lateinit var wordListener: ValueEventListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +50,13 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         leave_room()
+        timer.cancel()
+        if (::gameListener.isInitialized) {
+            db.child("games").removeEventListener(gameListener)
+        }
+        if (::wordListener.isInitialized) {
+            db.child("games").removeEventListener(wordListener)
+        }
     }
 
     override fun onPause() {
@@ -97,22 +110,12 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
         db.child(roomList[mod - 1]).child("7").child(username!!).removeValue()
     }
 
-
-    fun isTurkishWord(word: String): Boolean {
-        val url = "https://sozluk.gov.tr/gts?ara=kelime"
-        return try {
-            val document: Document = Jsoup.connect(url).get()
-            val elementText = document.body().text()
-            val expectedText = "{\"error\":\"Sonuç bulunamadı\"}"
-            elementText != expectedText
-        } catch (e: IOException) {
-            false
-        }
-    }
-
     private fun initUI() {
         val username = intent.getStringExtra("username")
         binding.txtUsername7.text = username
+        val request_to = intent.getStringExtra("request_to")
+        val request_from = intent.getStringExtra("request_from")
+        val mod = intent.getIntExtra("mod", 0)
         var textList = listOf(
             binding.et71,
             binding.et72,
@@ -127,9 +130,9 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
             textList[i].filters = arrayOf<InputFilter>(InputFilter.LengthFilter(1))
         }
 
-        for(editText in textList) {
-            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
-            editText.addTextChangedListener(object : TextWatcher {
+        for(i in 0 until textList.size) {
+            textList[i].inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+            textList[i].addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                     // Do nothing
                 }
@@ -141,8 +144,17 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
                 override fun afterTextChanged(s: Editable) {
                     val text = s.toString()
                     if (text != text.toUpperCase()) {
-                        editText.setText(text.toUpperCase())
-                        editText.setSelection(text.length) // Reset cursor position
+                        textList[i].setText(text.toUpperCase())
+                        textList[i].setSelection(text.length) // Reset cursor position
+                    }
+                    s?.let {
+                        if (it.length == 1 &&  i < textList.size-1) {
+                            textList[i + 1].requestFocus()
+                        } else if (it.length == 0 && i > 0) {
+                            textList [i - 1].requestFocus()
+                        } else {
+                            // Do nothing
+                        }
                     }
                 }
             })
@@ -152,10 +164,32 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
             var word = ""
             for (editText in textList) {
                 word += editText.text.toString()
-
             }
-            val isWord = isTurkishWord(word.lowercase())
-            Toast.makeText(this, "$word + $isWord", Toast.LENGTH_SHORT).show()
+            wordListener = db.child("games").addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    var user_1_words = ""
+                    var user_2_words = ""
+                    for (snapshot in dataSnapshot.children) {
+                        user_1_words = snapshot.child("user_1_words").value.toString()
+                        user_2_words = snapshot.child("user_2_words").value.toString()
+                    }
+                    if (user_1_words.length > 0 && user_2_words.length > 0) {
+                        val username = intent.getStringExtra("username")
+                        val mod = intent.getIntExtra("mod", 0)
+                        val intent = Intent(this@ChooseWordsSevenActivity, SevenGameActivity::class.java)
+                        intent.putExtra("username", username)
+                        intent.putExtra("mod", mod)
+                        intent.putExtra("request_to", request_to)
+                        intent.putExtra("request_from", request_from)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
         }
     }
 }

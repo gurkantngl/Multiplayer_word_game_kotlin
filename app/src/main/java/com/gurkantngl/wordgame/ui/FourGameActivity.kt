@@ -10,8 +10,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.collection.mutableVectorOf
-import androidx.compose.ui.text.toUpperCase
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -22,7 +20,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.gurkantngl.wordgame.R
 import com.gurkantngl.wordgame.databinding.ActivityFourGameBinding
-import java.util.concurrent.atomic.AtomicInteger
 
 class FourGameActivity : AppCompatActivity() {
 
@@ -35,11 +32,10 @@ class FourGameActivity : AppCompatActivity() {
         binding = ActivityFourGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
+
     }
 
     private fun initUI() {
-        var username = intent.getStringExtra("username")
-        var mod = intent.getIntExtra("mod", 0)
         setEditTexts(0)
     }
     private fun setEditTexts(hak: Int){
@@ -80,7 +76,7 @@ class FourGameActivity : AppCompatActivity() {
     }
 
     private fun word(textList : List<EditText>, hak : Int) {
-        var username = intent.getStringExtra("username")
+        val username = intent.getStringExtra("username")
         textList[textList.size-1].setOnEditorActionListener{ v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
@@ -90,7 +86,6 @@ class FourGameActivity : AppCompatActivity() {
                             var word = ""
                             val user_1 = snapshot.child("user_1").value.toString()
                             val user_1_word = snapshot.child("user_1_word").value.toString()
-                            val user_2 = snapshot.child("user_2").value.toString()
                             val user_2_word = snapshot.child("user_2_word").value.toString()
                             if (user_1 == username) {
                                 question = user_2_word

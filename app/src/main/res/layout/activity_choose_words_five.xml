@@ -9,6 +9,34 @@
     tools:context=".ui.ChooseWordsFiveActivity">
 
     <TextView
+        android:id="@+id/txtWait5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rakibin kelime seçmesi bekleniyor..."
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:typeface="serif"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_kronometre5"
+        android:layout_width="51dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:typeface="serif"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txt_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

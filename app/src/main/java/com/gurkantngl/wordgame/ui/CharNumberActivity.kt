@@ -43,9 +43,7 @@ class CharNumberActivity : AppCompatActivity() {
         val username = intent.getStringExtra("username")
         val mod = intent.getIntExtra("mod", 0)
        binding.btnNumber4.setOnClickListener {
-           Toast.makeText(this, "mod: $mod, kelime: 4", Toast.LENGTH_SHORT).show()
            join_room(4)
-
            val intent = Intent(this, PlayersInRoomActivity::class.java)
            intent.putExtra("mod", mod)
            intent.putExtra("username", username)
@@ -54,7 +52,6 @@ class CharNumberActivity : AppCompatActivity() {
 
        }
         binding.btnNumber5.setOnClickListener {
-            Toast.makeText(this, "mod: $mod, kelime: 5", Toast.LENGTH_SHORT).show()
             join_room(5)
             val intent = Intent(this, PlayersInRoomActivity::class.java)
             intent.putExtra("mod", mod)
@@ -66,12 +63,14 @@ class CharNumberActivity : AppCompatActivity() {
             Toast.makeText(this, "mod: $mod, kelime: 6", Toast.LENGTH_SHORT).show()
             join_room(6)
             val intent = Intent(this, PlayersInRoomActivity::class.java)
+            intent.putExtra("mod", mod)
+            intent.putExtra("username", username)
+            intent.putExtra("roomNumber", 6)
             startActivity(intent)
         }
         binding.btnNumber7.setOnClickListener {
-            Toast.makeText(this, "mod: $mod, kelime: 7", Toast.LENGTH_SHORT).show()
             join_room(7)
-            val intent = Intent(this, ChooseWordsSevenActivity::class.java)
+            val intent = Intent(this, PlayersInRoomActivity::class.java)
             intent.putExtra("mod", mod)
             intent.putExtra("username", username)
             intent.putExtra("roomNumber", 7)
