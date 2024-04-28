@@ -1,5 +1,6 @@
 package com.gurkantngl.wordgame.ui
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -62,23 +63,29 @@ class FourGameActivity : AppCompatActivity() {
                 timeLeft = millisUntilFinished
                 // 10 saniye kala uyarı ver
                 if (timeLeft < 10000) {
-                    Toast.makeText(this@FourGameActivity, "Süreniz azaldı!!!", Toast.LENGTH_SHORT)
-                        .show()
+                    val secondsRemaining = millisUntilFinished / 1000
+                    binding.etTimer4.setText(secondsRemaining.toString())
                 }
             }
 
             override fun onFinish() {
-                TODO("Not yet implemented")
+                val username = intent.getStringExtra("username")
+                val intent = Intent(this@FourGameActivity, TimeOverActivity::class.java)
+                intent.putExtra("username", username)
+                startActivity(intent)
+                finish()
             }
         }.start()
     }
     fun resetTimer(){
         countDownTimer?.cancel()
         timeLeft = 60000
+        binding.etTimer4.setText("")
         startTimer()
     }
 
     private fun initUI() {
+        startTimer()
         setEditTexts(0)
     }
     private fun setEditTexts(hak: Int){

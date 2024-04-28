@@ -9,13 +9,15 @@
     tools:context=".ui.SixGameActivity">
 
     <EditText
-        android:id="@+id/et_timer_4"
+        android:id="@+id/et_timer_6"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="text"
+        android:gravity="center"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
