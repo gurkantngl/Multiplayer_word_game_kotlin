@@ -2,6 +2,7 @@ package com.gurkantngl.wordgame.ui
 
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -31,6 +33,8 @@ class FourGameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFourGameBinding
     private val db = Firebase.database.reference
+    private var countDownTimer: CountDownTimer? = null
+    private var timeLeft = 60000L //60 saniye
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +43,39 @@ class FourGameActivity : AppCompatActivity() {
         setContentView(binding.root)
         initUI()
 
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Oyunu Terk Et")
+            .setMessage("Oyundan çıkmanız halinde oyunu kaybedeceksiniz. Çıkmak istiyorsanız onay butonuna basınız")
+            .setPositiveButton("Onayla") { _, _ ->
+                super.onBackPressed()
+            }
+            .setNegativeButton("İptal", null)
+            .show()
+    }
+
+    fun startTimer() {
+        countDownTimer = object : CountDownTimer(timeLeft, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeft = millisUntilFinished
+                // 10 saniye kala uyarı ver
+                if (timeLeft < 10000) {
+                    Toast.makeText(this@FourGameActivity, "Süreniz azaldı!!!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+
+            override fun onFinish() {
+                TODO("Not yet implemented")
+            }
+        }.start()
+    }
+    fun resetTimer(){
+        countDownTimer?.cancel()
+        timeLeft = 60000
+        startTimer()
     }
 
     private fun initUI() {
@@ -85,6 +122,7 @@ class FourGameActivity : AppCompatActivity() {
         val username = intent.getStringExtra("username")
         textList[textList.size-1].setOnEditorActionListener{ v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
+                resetTimer()
                 db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         for (snapshot in dataSnapshot.children) {
