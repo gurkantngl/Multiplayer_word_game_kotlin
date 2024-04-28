@@ -295,6 +295,7 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                         "user_1_word" to "",
                                         "user_2" to request_from,
                                         "user_2_word" to "",
+                                        "time_over" to ""
                                     )
 
                                     db.child("games").push().setValue(userMap)

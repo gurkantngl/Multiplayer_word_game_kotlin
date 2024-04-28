@@ -35,6 +35,7 @@ class Winner1Activity : AppCompatActivity() {
             val intent = Intent(this, ModSelectActivity::class.java)
             intent.putExtra("username", username)
             startActivity(intent)
+            finish()
         }
     }
 }

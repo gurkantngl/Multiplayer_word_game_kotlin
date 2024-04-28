@@ -70,6 +70,21 @@ class FourGameActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 val username = intent.getStringExtra("username")
+                db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for(snapshot in dataSnapshot.children) {
+                            val user_1 = snapshot.child("user_1").getValue(String::class.java).toString()
+                            val user_2 = snapshot.child("user_2").getValue(String::class.java).toString()
+                            if (username == user_1 || username == user_2) {
+                                snapshot.ref.child("time_over").setValue(username)
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
                 val intent = Intent(this@FourGameActivity, TimeOverActivity::class.java)
                 intent.putExtra("username", username)
                 startActivity(intent)
@@ -85,6 +100,25 @@ class FourGameActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+        val username = intent.getStringExtra("username")
+        db.child("games").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val timeOver = snapshot.child("time_over").getValue(String::class.java).toString()
+                    if(timeOver != username && timeOver.length > 0) {
+                        val intent = Intent(this@FourGameActivity, Winner1Activity::class.java)
+                        intent.putExtra("username", username)
+                        intent.putExtra("winner", username)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Veri okuma hatası oluştuğunda burası çağrılır.
+            }
+        })
         startTimer()
         setEditTexts(0)
     }
