@@ -100,6 +100,7 @@ class FourGameActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+        // 60 saniye işlem yapılmaması
         val username = intent.getStringExtra("username")
         db.child("games").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -119,6 +120,13 @@ class FourGameActivity : AppCompatActivity() {
                 // Veri okuma hatası oluştuğunda burası çağrılır.
             }
         })
+
+        binding.btnRakip.setOnClickListener{
+            val intent = Intent(this, RivalScreenActivityFour::class.java)
+            intent.putExtra("username", username)
+            startActivity(intent)
+        }
+
         startTimer()
         setEditTexts(0)
     }
@@ -174,8 +182,60 @@ class FourGameActivity : AppCompatActivity() {
                             val user_2_word = snapshot.child("user_2_word").value.toString()
                             if (user_1 == username) {
                                 question = user_2_word
+                                val gameId = snapshot.key.toString()
+                                val trialsRef = db.child("games").child(gameId).child("user_1_trials")
+                                trialsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                        if (dataSnapshot.exists()) {
+                                            val trialsList = ArrayList<String>()
+                                            for (childSnapshot in dataSnapshot.children) {
+                                                val trial = childSnapshot.getValue(String::class.java)
+                                                if (trial != null) {
+                                                    trialsList.add(trial)
+                                                }
+                                            }
+                                            if (word != null) {
+                                                trialsList.add(word)
+                                                trialsRef.setValue(trialsList)
+                                            }
+                                        } else {
+                                            val newTrialsList = arrayListOf(word)
+                                            trialsRef.setValue(newTrialsList)
+                                        }
+                                    }
+                                    override fun onCancelled(databaseError: DatabaseError) {
+                                        println("loadPost:onCancelled ${databaseError.toException()}")
+                                    }
+                                })
                             }else {
                                 question = user_1_word
+
+                                val gameId = snapshot.key.toString()
+                                val trialsRef = db.child("games").child(gameId).child("user_2_trials")
+                                trialsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                        if (dataSnapshot.exists()) {
+                                            val trialsList = ArrayList<String>()
+                                            for (childSnapshot in dataSnapshot.children) {
+                                                val trial = childSnapshot.getValue(String::class.java)
+                                                if (trial != null) {
+                                                    trialsList.add(trial)
+                                                }
+                                            }
+                                            if (word != null) {
+                                                trialsList.add(word)
+                                                trialsRef.setValue(trialsList)
+                                            }
+                                        } else {
+                                            val newTrialsList = arrayListOf(word)
+                                            trialsRef.setValue(newTrialsList)
+                                        }
+                                    }
+
+                                    override fun onCancelled(databaseError: DatabaseError) {
+                                        println("loadPost:onCancelled ${databaseError.toException()}")
+                                    }
+                                })
                             }
                             for (editText in textList) {
                                 word += editText.text.toString()

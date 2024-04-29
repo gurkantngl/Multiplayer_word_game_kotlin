@@ -15,6 +15,9 @@
         android:theme="@style/Theme.WordGame"
         tools:targetApi="31">
         <activity
+            android:name=".ui.RivalScreenActivityFour"
+            android:exported="false" />
+        <activity
             android:name=".ui.TimeOverActivity"
             android:exported="false" />
         <activity
