@@ -18,9 +18,18 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-30T07:59:47.533190500Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-04-30T10:31:14.634809200Z" />
           <multipleDevicesSelectedInDropDown value="true" />
           <runningDeviceTargetsSelectedWithDialog>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\ASUS\.android\avd\Pixel_8_Pro_Edited_API_34_1.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
             <Target>
               <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
@@ -31,6 +40,17 @@
               </deviceKey>
             </Target>
           </runningDeviceTargetsSelectedWithDialog>
+          <targetsSelectedWithDialog>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\ASUS\.android\avd\Pixel_8_Pro_Edited_API_34_1.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetsSelectedWithDialog>
         </State>
       </entry>
     </value>
