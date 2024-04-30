@@ -103,8 +103,6 @@ class FiveGameActivity : AppCompatActivity() {
 
     private fun initUI() {
         var username = intent.getStringExtra("username")
-        var mod = intent.getIntExtra("mod", 0)
-
         db.child("games").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (snapshot in dataSnapshot.children) {
@@ -162,7 +160,7 @@ class FiveGameActivity : AppCompatActivity() {
         })
 
         binding.btnRakip5.setOnClickListener{
-            val intent = Intent(this, RivalScreenActivityFour::class.java)
+            val intent = Intent(this, RivalScreenActivityFive::class.java)
             intent.putExtra("username", username)
             startActivity(intent)
         }
