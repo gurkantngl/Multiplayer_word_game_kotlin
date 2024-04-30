@@ -15,13 +15,24 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:inputType="text"
         android:gravity="center"
+        android:inputType="text"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_rakip7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Rakibin ekranını gör"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout8" />
+
     <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"

@@ -93,7 +93,6 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
                 }
                 val usersString = users.joinToString(", ")
 
-                Toast.makeText(this@ChooseWordsSevenActivity, usersString, Toast.LENGTH_SHORT).show()
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -248,7 +247,6 @@ class ChooseWordsSevenActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-
                 gameListener = db.child("games").addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         for (snapshot in dataSnapshot.children) {

@@ -30,8 +30,10 @@ class Winner1Activity : AppCompatActivity() {
     private fun initUI() {
         val winner = intent.getStringExtra("winner")
         val username = intent.getStringExtra("username")
-        binding.txtWinner.text = "Kazanan Oyuncu: $winner"
+        val point = intent.getStringExtra("point")
+        binding.txtWinner.text = "Kazanan Oyuncu: $winner $point"
         binding.btnWinner.setOnClickListener{
+            db.setValue(null)
             val intent = Intent(this, ModSelectActivity::class.java)
             intent.putExtra("username", username)
             startActivity(intent)

@@ -87,9 +87,6 @@ class ChooseWordsFiveActivity : AppCompatActivity() {
                         users.add(user!!)
                     }
                 }
-                val usersString = users.joinToString(", ")
-
-                Toast.makeText(this@ChooseWordsFiveActivity, usersString, Toast.LENGTH_SHORT).show()
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -187,6 +184,8 @@ class ChooseWordsFiveActivity : AppCompatActivity() {
                         val intent = Intent(this@ChooseWordsFiveActivity, FiveGameActivity::class.java)
                         intent.putExtra("username", username)
                         intent.putExtra("mod", mod)
+                        intent.putExtra("request_to", request_to)
+                        intent.putExtra("request_from", request_from)
                         startActivity(intent)
                         finish()
                     }

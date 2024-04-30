@@ -15,13 +15,25 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:inputType="text"
         android:gravity="center"
+        android:inputType="text"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <Button
+        android:id="@+id/btn_rakip5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Rakibin ekranını gör"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout6" />
+
     <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -38,10 +50,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
-            android:inputType="text" />
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et5_1_2"
@@ -50,10 +62,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="1"
             app:layout_row="0" />
 
@@ -64,10 +76,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="2"
             app:layout_row="0" />
 
@@ -78,10 +90,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="3"
             app:layout_row="0" />
 
@@ -91,10 +103,10 @@
             android:layout_height="75dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="4"
             app:layout_row="0" />
 
@@ -106,10 +118,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="0"
             app:layout_row="1" />
 
@@ -121,10 +133,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="1"
             app:layout_row="1" />
 
@@ -135,10 +147,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="2"
             app:layout_row="1" />
 
@@ -149,10 +161,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="3"
             app:layout_row="1" />
 
@@ -163,10 +175,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="4"
             app:layout_row="1" />
 
@@ -178,10 +190,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="0"
             app:layout_row="2" />
 
@@ -193,10 +205,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="1"
             app:layout_row="2" />
 
@@ -207,10 +219,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="2"
             app:layout_row="2" />
 
@@ -221,10 +233,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="3"
             app:layout_row="2" />
 
@@ -235,10 +247,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="4"
             app:layout_row="2" />
 
@@ -250,10 +262,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="0"
             app:layout_row="3" />
 
@@ -265,10 +277,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="1"
             app:layout_row="3" />
 
@@ -279,10 +291,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="2"
             app:layout_row="3" />
 
@@ -293,10 +305,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="3"
             app:layout_row="3" />
 
@@ -307,10 +319,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="4"
             app:layout_row="3" />
 
@@ -322,10 +334,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="0"
             app:layout_row="4" />
 
@@ -337,10 +349,10 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="1"
             app:layout_row="4" />
 
@@ -351,10 +363,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="2"
             app:layout_row="4" />
 
@@ -365,10 +377,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="3"
             app:layout_row="4" />
 
@@ -379,10 +391,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval_background"
             android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:inputType="text"
             android:maxLength="1"
+            android:textColor="@color/black"
             app:layout_column="4"
             app:layout_row="4" />
     </androidx.gridlayout.widget.GridLayout>

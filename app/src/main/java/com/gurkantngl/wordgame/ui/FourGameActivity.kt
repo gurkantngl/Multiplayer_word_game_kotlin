@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.gurkantngl.wordgame.R
@@ -44,6 +45,11 @@ class FourGameActivity : AppCompatActivity() {
         setContentView(binding.root)
         initUI()
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        countDownTimer?.cancel()
     }
 
     override fun onBackPressed() {
@@ -108,6 +114,7 @@ class FourGameActivity : AppCompatActivity() {
                     val timeOver = snapshot.child("time_over").getValue(String::class.java).toString()
                     if(timeOver != username && timeOver.length > 0) {
                         val intent = Intent(this@FourGameActivity, Winner1Activity::class.java)
+                        intent.putExtra("point", "")
                         intent.putExtra("username", username)
                         intent.putExtra("winner", username)
                         startActivity(intent)
@@ -118,6 +125,42 @@ class FourGameActivity : AppCompatActivity() {
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Veri okuma hatası oluştuğunda burası çağrılır.
+            }
+        })
+
+        // oyunu biri kazandığında
+        db.child("games").addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val user_1 = snapshot.child("user_1").getValue(String::class.java).toString()
+                    val user_2 = snapshot.child("user_2").getValue(String::class.java).toString()
+                    if (username == user_1 || username == user_2) {
+                        val winner = snapshot.child("winner").value.toString()
+                        if (winner == username) {
+                            val point = 40 + (timeLeft /1000)
+                            val p = "Puanınız: $point"
+                            val intent = Intent(this@FourGameActivity, Winner1Activity::class.java)
+                            intent.putExtra("username", username)
+                            intent.putExtra("winner", username)
+                            intent.putExtra("point", p)
+                            startActivity(intent)
+                            finish()
+                        } else if (winner.length > 0 && winner != username){
+                            val point = 15 + (timeLeft /1000)
+                            val p = "Puanınız: $point"
+                            val intent = Intent(this@FourGameActivity, Winner1Activity::class.java)
+                            intent.putExtra("username", username)
+                            intent.putExtra("winner", winner)
+                            intent.putExtra("point", p)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
             }
         })
 
@@ -253,6 +296,22 @@ class FourGameActivity : AppCompatActivity() {
                                         if (word == question) {
                                             for (editText in textList) {
                                                 editText.background.setColorFilter(ContextCompat.getColor(this@FourGameActivity, R.color.green), PorterDuff.Mode.SRC_IN)
+                                                db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
+                                                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                                        for (snapshot in dataSnapshot.children) {
+                                                            val user_1 = snapshot.child("user_1").value.toString()
+                                                            val user_2 = snapshot.child("user_2").value.toString()
+
+                                                            if(username == user_1 || username == user_2) {
+                                                                snapshot.ref.child("winner").setValue(username)
+                                                            }
+                                                        }
+                                                    }
+
+                                                    override fun onCancelled(error: DatabaseError) {
+                                                        TODO("Not yet implemented")
+                                                    }
+                                                })
                                             }
                                         }else {
                                             for(i in 0 until textList.size) {
@@ -292,13 +351,10 @@ class FourGameActivity : AppCompatActivity() {
                             }
                         }
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
                 })
-
-
                 true
             } else {
                 false

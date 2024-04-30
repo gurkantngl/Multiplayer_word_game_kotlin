@@ -1,9 +1,11 @@
 package com.gurkantngl.wordgame.ui
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
@@ -72,14 +74,9 @@ class RivalScreenActivityFour : AppCompatActivity() {
                                 }
                                 var counter = 0
                                 for (i in 0 until trialsList.size){
-                                    for (j in 0 until trialsList[i].length){
+                                    for (j in 0 until trialsList[i].length) {
                                         textList[counter].setText(trialsList[i][j].toString())
                                         counter += 1
-                                        val indices = mutableListOf<Int>()
-                                        for((index, value) in word.withIndex()){
-                                            if (value.toString() == textList[])
-                                        }
-
                                     }
                                 }
                             }

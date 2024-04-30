@@ -5,11 +5,8 @@ import androidx.appcompat.app.AlertDialog
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -17,7 +14,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.gurkantngl.wordgame.R
 import com.gurkantngl.wordgame.databinding.ActivityPlayersInRoomBinding
 
 class PlayersInRoomActivity : AppCompatActivity() {
@@ -66,7 +62,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                 }
                 val usersString = users.joinToString(", ")
 
-                Toast.makeText(this@PlayersInRoomActivity, usersString, Toast.LENGTH_SHORT).show()
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -120,7 +115,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                     }
                 }
                 val usersString = users.joinToString(", ")
-                Toast.makeText(this@PlayersInRoomActivity, usersString, Toast.LENGTH_SHORT).show()
 
                 if (!users.isEmpty()) {
                     binding.txtEmpty.visibility = View.GONE
@@ -147,7 +141,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                 val requestFrom = dataSnapshot.child("request_from").getValue(String::class.java)
                 val requestId = dataSnapshot.key
                 if (requestTo == username) {
-                    Toast.makeText(this@PlayersInRoomActivity, "Oynama isteği var", Toast.LENGTH_SHORT).show()
 
                     lateinit var alertDialog: AlertDialog // alertDialog'ı tanımla
 
@@ -200,7 +193,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                             if (status == 2) {
                                 alertDialog.dismiss()
                                 countDownTimerobject.cancel()
-                                Toast.makeText(this@PlayersInRoomActivity, "İstek iptal edildi", Toast.LENGTH_SHORT).show()
                             }else if (status == 1) {
                                 val activityMap = mapOf(
                                     4 to ChooseWordsFourActivity::class.java,
@@ -216,7 +208,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                     intent.putExtra("mod", mod)
                                     startActivity(intent)
                                 }else {
-                                    Toast.makeText(this@PlayersInRoomActivity, "Server Error!!!", Toast.LENGTH_SHORT).show()
                                 }
 
                             }
@@ -227,7 +218,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                         }
                     })
                 } else if (requestFrom == username) {
-                    Toast.makeText(this@PlayersInRoomActivity, "Oynama isteği gönderildi", Toast.LENGTH_SHORT).show()
 
                     lateinit var alertDialog: AlertDialog // alertDialog'ı tanımla
                     val builder = AlertDialog.Builder(this@PlayersInRoomActivity)
@@ -277,7 +267,6 @@ class PlayersInRoomActivity : AppCompatActivity() {
                             if (status == 2) {
                                 alertDialog.dismiss()
                                 countDownTimerobject.cancel()
-                                Toast.makeText(this@PlayersInRoomActivity, "İstek iptal edildi", Toast.LENGTH_SHORT).show()
                             } else if (status == 1) {
                                 val activityMap = mapOf(
                                     4 to ChooseWordsFourActivity::class.java,
@@ -295,7 +284,8 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                         "user_1_word" to "",
                                         "user_2" to request_from,
                                         "user_2_word" to "",
-                                        "time_over" to ""
+                                        "time_over" to "",
+                                        "winner" to ""
                                     )
 
                                     db.child("games").push().setValue(userMap)
@@ -308,10 +298,8 @@ class PlayersInRoomActivity : AppCompatActivity() {
                                             startActivity(intent)
                                         }
                                         .addOnFailureListener {
-                                            Toast.makeText(this@PlayersInRoomActivity, "Error Creating Game", Toast.LENGTH_SHORT).show()
                                         }
                                 } else {
-                                    Toast.makeText(this@PlayersInRoomActivity, "Server Error!!!", Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }
