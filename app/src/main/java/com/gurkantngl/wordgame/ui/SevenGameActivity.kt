@@ -1,7 +1,9 @@
 package com.gurkantngl.wordgame.ui
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -9,6 +11,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -30,6 +33,8 @@ class SevenGameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySevenGameBinding
     private val db = Firebase.database.reference
+    private var countDownTimer: CountDownTimer? = null
+    private var timeLeft = 60000L //60 saniye
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +43,131 @@ class SevenGameActivity : AppCompatActivity() {
         setContentView(binding.root)
         initUI()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        countDownTimer?.cancel()
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Oyunu Terk Et")
+            .setMessage("Oyundan çıkmanız halinde oyunu kaybedeceksiniz. Çıkmak istiyorsanız onay butonuna basınız")
+            .setPositiveButton("Onayla") { _, _ ->
+                super.onBackPressed()
+            }
+            .setNegativeButton("İptal", null)
+            .show()
+    }
+
+    fun startTimer() {
+        countDownTimer = object : CountDownTimer(timeLeft, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeft = millisUntilFinished
+                // 10 saniye kala uyarı ver
+                if (timeLeft < 10000) {
+                    val secondsRemaining = millisUntilFinished / 1000
+                    binding.etTimer7.setText(secondsRemaining.toString())
+                }
+            }
+
+            override fun onFinish() {
+                val username = intent.getStringExtra("username")
+                db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for(snapshot in dataSnapshot.children) {
+                            val user_1 = snapshot.child("user_1").getValue(String::class.java).toString()
+                            val user_2 = snapshot.child("user_2").getValue(String::class.java).toString()
+                            if (username == user_1 || username == user_2) {
+                                snapshot.ref.child("time_over").setValue(username)
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+                val intent = Intent(this@SevenGameActivity, TimeOverActivity::class.java)
+                intent.putExtra("username", username)
+                startActivity(intent)
+                finish()
+            }
+        }.start()
+    }
+    fun resetTimer(){
+        countDownTimer?.cancel()
+        timeLeft = 60000
+        binding.etTimer7.setText("")
+        startTimer()
+    }
+
     private fun initUI() {
-        var username = intent.getStringExtra("username")
-        var mod = intent.getIntExtra("mod", 0)
+        // 60 saniye işlem yapılmaması
+        val username = intent.getStringExtra("username")
+        db.child("games").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val timeOver = snapshot.child("time_over").getValue(String::class.java).toString()
+                    if(timeOver != username && timeOver.length > 0) {
+                        val intent = Intent(this@SevenGameActivity, Winner1Activity::class.java)
+                        intent.putExtra("point", "")
+                        intent.putExtra("username", username)
+                        intent.putExtra("winner", username)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Veri okuma hatası oluştuğunda burası çağrılır.
+            }
+        })
+
+        // oyunu biri kazandığında
+        db.child("games").addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val user_1 = snapshot.child("user_1").getValue(String::class.java).toString()
+                    val user_2 = snapshot.child("user_2").getValue(String::class.java).toString()
+                    if (username == user_1 || username == user_2) {
+                        val winner = snapshot.child("winner").value.toString()
+                        if (winner == username) {
+                            val point = 40 + (timeLeft /1000)
+                            val p = "Puanınız: $point"
+                            val intent = Intent(this@SevenGameActivity, Winner1Activity::class.java)
+                            intent.putExtra("username", username)
+                            intent.putExtra("winner", username)
+                            intent.putExtra("point", p)
+                            startActivity(intent)
+                            finish()
+                        } else if (winner.length > 0 && winner != username){
+                            val point = 15 + (timeLeft /1000)
+                            val p = "Puanınız: $point"
+                            val intent = Intent(this@SevenGameActivity, Winner1Activity::class.java)
+                            intent.putExtra("username", username)
+                            intent.putExtra("winner", winner)
+                            intent.putExtra("point", p)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        binding.btnRakip7.setOnClickListener{
+            val intent = Intent(this, RivalScreenActivityFour::class.java)
+            intent.putExtra("username", username)
+            startActivity(intent)
+        }
+
+        startTimer()
         setEditTexts(0)
     }
     private fun setEditTexts(hak:Int){
@@ -128,6 +255,7 @@ class SevenGameActivity : AppCompatActivity() {
         val username = intent.getStringExtra("username")
         textList[textList.size-1].setOnEditorActionListener{ v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
+                resetTimer()
                 db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         for (snapshot in dataSnapshot.children) {
@@ -138,8 +266,60 @@ class SevenGameActivity : AppCompatActivity() {
                             val user_2_word = snapshot.child("user_2_word").value.toString()
                             if (user_1 == username) {
                                 question = user_2_word
+                                val gameId = snapshot.key.toString()
+                                val trialsRef = db.child("games").child(gameId).child("user_1_trials")
+                                trialsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                        if (dataSnapshot.exists()) {
+                                            val trialsList = ArrayList<String>()
+                                            for (childSnapshot in dataSnapshot.children) {
+                                                val trial = childSnapshot.getValue(String::class.java)
+                                                if (trial != null) {
+                                                    trialsList.add(trial)
+                                                }
+                                            }
+                                            if (word != null) {
+                                                trialsList.add(word)
+                                                trialsRef.setValue(trialsList)
+                                            }
+                                        } else {
+                                            val newTrialsList = arrayListOf(word)
+                                            trialsRef.setValue(newTrialsList)
+                                        }
+                                    }
+                                    override fun onCancelled(databaseError: DatabaseError) {
+                                        println("loadPost:onCancelled ${databaseError.toException()}")
+                                    }
+                                })
                             }else {
                                 question = user_1_word
+
+                                val gameId = snapshot.key.toString()
+                                val trialsRef = db.child("games").child(gameId).child("user_2_trials")
+                                trialsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                        if (dataSnapshot.exists()) {
+                                            val trialsList = ArrayList<String>()
+                                            for (childSnapshot in dataSnapshot.children) {
+                                                val trial = childSnapshot.getValue(String::class.java)
+                                                if (trial != null) {
+                                                    trialsList.add(trial)
+                                                }
+                                            }
+                                            if (word != null) {
+                                                trialsList.add(word)
+                                                trialsRef.setValue(trialsList)
+                                            }
+                                        } else {
+                                            val newTrialsList = arrayListOf(word)
+                                            trialsRef.setValue(newTrialsList)
+                                        }
+                                    }
+
+                                    override fun onCancelled(databaseError: DatabaseError) {
+                                        println("loadPost:onCancelled ${databaseError.toException()}")
+                                    }
+                                })
                             }
                             for (editText in textList) {
                                 word += editText.text.toString()
@@ -157,6 +337,22 @@ class SevenGameActivity : AppCompatActivity() {
                                         if (word == question) {
                                             for (editText in textList) {
                                                 editText.background.setColorFilter(ContextCompat.getColor(this@SevenGameActivity, R.color.green), PorterDuff.Mode.SRC_IN)
+                                                db.child("games").addListenerForSingleValueEvent(object : ValueEventListener {
+                                                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                                        for (snapshot in dataSnapshot.children) {
+                                                            val user_1 = snapshot.child("user_1").value.toString()
+                                                            val user_2 = snapshot.child("user_2").value.toString()
+
+                                                            if(username == user_1 || username == user_2) {
+                                                                snapshot.ref.child("winner").setValue(username)
+                                                            }
+                                                        }
+                                                    }
+
+                                                    override fun onCancelled(error: DatabaseError) {
+                                                        TODO("Not yet implemented")
+                                                    }
+                                                })
                                             }
                                         }else {
                                             for(i in 0 until textList.size) {
@@ -196,13 +392,10 @@ class SevenGameActivity : AppCompatActivity() {
                             }
                         }
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
                 })
-
-
                 true
             } else {
                 false
